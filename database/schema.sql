@@ -13,7 +13,8 @@ CREATE SEQUENCE app_user_id_seq
 CREATE TABLE app_user (
 	user_id integer NOT NULL DEFAULT nextval('app_user_id_seq'),
 	user_name varchar(20) UNIQUE NOT NULL,
-	password varchar(32) NOT NULL,
+	password varchar(32) NOT NULL,      
+    salt varchar(256) NOT NULL,
 	user_role varchar(20),
 	CONSTRAINT pk_app_user_user_id PRIMARY KEY (user_id)
 	);
