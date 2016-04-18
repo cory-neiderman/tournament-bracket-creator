@@ -25,7 +25,7 @@ CREATE SEQUENCE tournament_id_seq
 	CACHE 1;
 	
 CREATE TABLE tournament (
-	tournament_id integer NOT NULL DEFAULT nextval('tournament_id_seq')
+	tournament_id integer NOT NULL DEFAULT nextval('tournament_id_seq'),
 	sport varchar(20) NOT NULL,
 	tournament_name varchar(50) UNIQUE NOT NULL,
 	champion_id integer,
@@ -43,7 +43,7 @@ CREATE SEQUENCE competitor_id_sequence
 	CACHE 1;
 	
 CREATE TABLE competitor (
-	competitor_id integer NOT NULL DEFAULT nextval('competitor_id_seq')
+	competitor_id integer NOT NULL DEFAULT nextval('competitor_id_seq'),
 	competitor_name varchar(50) UNIQUE NOT NULL,
 	CONSTRAINT pk_competitor_competitor_id PRIMARY KEY (competitor_id)
 	);
