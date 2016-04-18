@@ -15,7 +15,7 @@ import com.techelevator.model.JDBCUserDAO;
 
 
 @Controller
-
+@Transactional
 public class SignUpController {
 	
 	JDBCUserDAO userDAO;
