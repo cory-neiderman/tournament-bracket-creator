@@ -36,7 +36,7 @@ CREATE TABLE tournament (
 	CONSTRAINT pk_tournament_tournament_id PRIMARY KEY (tournament_id)
 	);
 
-CREATE SEQUENCE competitor_id_sequence
+CREATE SEQUENCE competitor_id_seq
 	INCREMENT BY 1
 	NO MAXVALUE
 	NO MINVALUE
