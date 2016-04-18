@@ -40,6 +40,7 @@ public class SignUpController {
 		
 		userDAO.saveUser(userName, password, role);
 		//model.put("user", userDAO.getUserIdByNameAndPassword(userName, password));
+		// Testing
 		
 		return "redirect:/";
 	}
