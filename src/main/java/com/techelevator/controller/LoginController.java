@@ -15,6 +15,7 @@ import com.techelevator.model.User;
 import com.techelevator.model.UserDAO;
 
 @Controller
+@SessionAttributes("user")
 public class LoginController{
 	
 	UserDAO userDAO;
@@ -27,6 +28,24 @@ public class LoginController{
 	@RequestMapping(path="/", method=RequestMethod.GET)
 	public String displayLoginPage(){
 		return "logIn";
+	}
+	
+	@RequestMapping(path="login", method=RequestMethod.POST)
+    public String lookUpUser(Map<String, Object> model,
+                                @RequestParam(name="username") String username,
+                                @RequestParam(name="password") String password){
+        
+        if(userDAO.getUserIdByNameAndPassword(username, password) == null){
+            return "redirect:/";
+        }
+        else{
+            model.put("user", userDAO.getUserIdByNameAndPassword(username, password));
+            return "redirect:/homepage";
+        }
+    }
+	@RequestMapping(path="/homepage", method=RequestMethod.GET)
+	public String displayHomepage(Map<String, Object> model) {
+		return "homepage";
 	}
 	
 	

@@ -5,7 +5,7 @@
 
 <html>
 <head>
-	<title>To Do List</title>
+	<title>Login</title>
 	<c:url var="cssHref" value="/css/site.css" />
 	<link type="text/css" rel="stylesheet" href="${cssHref}"/>
 </head>
