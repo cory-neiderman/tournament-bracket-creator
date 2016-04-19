@@ -11,7 +11,7 @@
 </head>
 	<body>
 		<form id="login" action="login" method="POST">
-		<h1>Login to use your todo list!</h1>
+		<h1>Login!</h1>
     		Username: <input type="text" name="username"><br/>
     		Password: <input type="password" name="password"><br/>
     		<input type="submit" value="Login"><br/>

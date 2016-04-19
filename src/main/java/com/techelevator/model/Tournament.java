@@ -5,14 +5,23 @@ import java.time.LocalDate;
 public class Tournament {
 	
 	private int tournamentId;
+	private int userId;
 	private String tournamentName;
 	private int championId;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private int minTeams;
 	private int maxTeams;
+	private String sport;
+	
 	public int getTournamentId() {
 		return tournamentId;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	public void setTournamentId(int tournamentId) {
 		this.tournamentId = tournamentId;
@@ -53,5 +62,21 @@ public class Tournament {
 	public void setMaxTeams(int maxTeams) {
 		this.maxTeams = maxTeams;
 	}
+	public String getSport() {
+		return sport;
+	}
+	public void setSport(String sport) {
+		this.sport = sport;
+	}
+	public String getStartDateAsString() {
+		return String.valueOf(startDate);	
+	}
+	
+	public String getEndDateAsString() {
+		return String.valueOf(endDate);	
+	}
+
+	
+	
 
 }

@@ -11,12 +11,12 @@ CREATE SEQUENCE app_user_id_seq
 	CACHE 1;
 	
 CREATE TABLE app_user (
-	user_id integer NOT NULL DEFAULT nextval('app_user_id_seq'),
+	app_user_id integer NOT NULL DEFAULT nextval('app_user_id_seq'),
 	user_name varchar(20) UNIQUE NOT NULL,
 	password varchar(32) NOT NULL,      
     salt varchar(256) NOT NULL,
 	user_role varchar(20),
-	CONSTRAINT pk_app_user_user_id PRIMARY KEY (user_id)
+	CONSTRAINT pk_app_user_app_user_id PRIMARY KEY (app_user_id)
 	);
 	
 CREATE SEQUENCE tournament_id_seq
@@ -34,6 +34,7 @@ CREATE TABLE tournament (
 	end_date date,
 	min_teams integer,
 	max_teams integer,
+	app_user_id integer NOT NULL, 
 	CONSTRAINT pk_tournament_tournament_id PRIMARY KEY (tournament_id)
 	);
 
@@ -48,17 +49,18 @@ CREATE TABLE competitor (
 	competitor_name varchar(50) UNIQUE NOT NULL,
 	CONSTRAINT pk_competitor_competitor_id PRIMARY KEY (competitor_id)
 	);
-	
-CREATE TABLE tournament_competitor (
-    tournament_id integer NOT NULL,
-    competitor_id integer NOT NULL,
-    CONSTRAINT pk_tournament_competitor_tournament_id_competitor_id PRIMARY KEY (tournament_id, competitor_id)
-	);
 
 CREATE TABLE app_user_competitor (
-	user_id integer NOT NULL,
+	app_user_id integer NOT NULL,
 	competitor_id integer NOT NULL,
-	CONSTRAINT pk_app_user_competitor_user_id_competitor_id PRIMARY KEY (user_id, competitor_id)
+	CONSTRAINT pk_app_user_competitor_app_user_id_competitor_id PRIMARY KEY (app_user_id, competitor_id)
 	);
+	
+CREATE TABLE tournament_app_user (
+    tournament_id integer NOT NULL,
+    app_user_id integer NOT NULL,
+    CONSTRAINT pk_tournament_app_user_tournament_id_app_user_id PRIMARY KEY (tournament_id, app_user_id)
+	);
+
 
 COMMIT;

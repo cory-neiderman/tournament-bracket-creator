@@ -15,6 +15,7 @@
 	<c:choose>
     <c:when test="${user.userRole eq 'host'}">
     	<a href="${tournamentHost}">Link to Tournament Organizer Page</a>
+    	
     </c:when>
     <c:otherwise>
         <br>

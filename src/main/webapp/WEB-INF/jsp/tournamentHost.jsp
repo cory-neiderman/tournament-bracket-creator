@@ -12,10 +12,10 @@
 	<body>
 		<h1>Welcome to the Tournament Organizer Page <c:out value="${user.userName}" />!</h1>
 		
-    	<a href="#">Create Tournament</a>
+    	<a href="createTournament">Create Tournament</a>
     	<a href="#">Add Team to Existing Tournament</a>
     	<a href="#">Schedule Matches</a>
     	<a href="#">Record Result from a Completed Match</a>
-    	
+   
 	</body>
 </html>

@@ -60,7 +60,7 @@ public class JDBCUserDAO implements UserDAO {
 	@Override
 	public User getUserIdByName(String username) {
 
-		String sqlQueryForId = "SELECT user_id, user_role FROM app_user WHERE user_name=?";
+		String sqlQueryForId = "SELECT app_user_id, user_role FROM app_user WHERE user_name=?";
 
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlQueryForId, username);
 
@@ -68,7 +68,7 @@ public class JDBCUserDAO implements UserDAO {
 
 			User user = new User();
 			user.setUserName(username);
-			user.setUserId(results.getInt("user_id"));
+			user.setUserId(results.getInt("app_user_id"));
 			user.setUserRole(results.getString("user_role"));
 
 			return user;
