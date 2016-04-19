@@ -56,10 +56,10 @@ CREATE TABLE app_user_competitor (
 	CONSTRAINT pk_app_user_competitor_app_user_id_competitor_id PRIMARY KEY (app_user_id, competitor_id)
 	);
 	
-CREATE TABLE tournament_app_user (
+CREATE TABLE competitor_tournament (
+    competitor_id integer NOT NULL,
     tournament_id integer NOT NULL,
-    app_user_id integer NOT NULL,
-    CONSTRAINT pk_tournament_app_user_tournament_id_app_user_id PRIMARY KEY (tournament_id, app_user_id)
+    CONSTRAINT pk_competitor_tournament_competitor_id_tournament_id PRIMARY KEY (competitor_id, tournament_id)
 	);
 
 
