@@ -85,23 +85,5 @@ public class CreateTournamentController {
 		
 	}
 	
-	@RequestMapping(path="/selectTournamentForAddingCompetitors", method=RequestMethod.GET)
-	public String displayListOfTournaments(Map<String, Object> model){
-		User user = (User)model.get("user");
-		List<Tournament> tournamentList = new ArrayList<>();
-		tournamentList=tournamentDAO.getListOfTournamentsByUserId(user.getUserId());
-		model.put("tournamentList", tournamentList);
-		
-		return "selectTournamentForAddingCompetitors";
-	}
 	
-	@RequestMapping(path="/addCompetitorsToTournament", method=RequestMethod.GET)
-	public String displayAddCompetitorsForm(Map<String, Object> model,
-													@RequestParam(name="tournamentId") int tournamentId){
-		model.put("tournamentId", tournamentId);
-		int maxTeams = tournamentDAO.getMaxTeamsByTournamentId(tournamentId);
-		model.put("maxTeams", maxTeams);
-		
-		return "addCompetitorsToTournament";
-	}
 }

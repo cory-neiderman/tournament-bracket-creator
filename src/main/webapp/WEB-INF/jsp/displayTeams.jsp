@@ -11,12 +11,6 @@
 </head>
 	<body>
 		
-		<h1>Add Competitors To Tournament</h1>
-		<form action="addTeams" method="POST">
-    	<c:forEach var="counter" begin="1" end="${maxTeams}">
-    		Competitor <c:out value="${counter}"/> Name: <input type="text" name="competitorName"><br>
-    	</c:forEach>
-    		<input type="submit" value="Submit">
-    	</form>
+		<c:out value="${allCompetitors}"/>
 	</body>
 </html>
