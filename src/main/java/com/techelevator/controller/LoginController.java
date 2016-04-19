@@ -2,6 +2,8 @@ package com.techelevator.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,16 +35,30 @@ public class LoginController{
 	@RequestMapping(path="login", method=RequestMethod.POST)
     public String lookUpUser(Map<String, Object> model,
                                 @RequestParam(name="username") String username,
-                                @RequestParam(name="password") String password){
+                                @RequestParam(name="password") String password,
+                                HttpSession session){
         
-        if(userDAO.getUserIdByNameAndPassword(username, password) == null){
-            return "redirect:/";
-        }
-        else{
-            model.put("user", userDAO.getUserIdByNameAndPassword(username, password));
+        if(userDAO.getUserIdByName(username) != null && userDAO.searchForUsernameAndPassword(username, password) == true){
+        	session.invalidate();
+            model.put("user", userDAO.getUserIdByName(username));
             return "redirect:/homepage";
         }
+        else{
+            return "redirect:/";
+        }
     }
+	
+	@RequestMapping(path="/tournamentHost", method=RequestMethod.GET)
+	public String displayTournamentHostPage(User user, HttpSession session) {
+		session.getAttribute("user");
+		if (user.getUserRole().equals("host")) {
+			return "tournamentHost";
+		} else {
+			return "homepage";
+		}
+		
+	}
+
 	@RequestMapping(path="/homepage", method=RequestMethod.GET)
 	public String displayHomepage(Map<String, Object> model) {
 		return "homepage";

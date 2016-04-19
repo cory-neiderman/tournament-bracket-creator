@@ -10,7 +10,15 @@
 	<link type="text/css" rel="stylesheet" href="${cssHref}"/>
 </head>
 	<body>
-		<h1>You're Logged In</h1>
-    		<c:out value="${user.userName}" />
+		<h1>You're Logged In <c:out value="${user.userName}" /></h1>
+	<c:url var="tournamentHost" value="/tournamentHost" />	
+	<c:choose>
+    <c:when test="${user.userRole eq 'host'}">
+    	<a href="${tournamentHost}">Link to Tournament Organizer Page</a>
+    </c:when>
+    <c:otherwise>
+        <br>
+    </c:otherwise>
+</c:choose>	
 	</body>
 </html>

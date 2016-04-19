@@ -4,6 +4,8 @@ public interface UserDAO {
 	
 	public void saveUser(String userName, String password, String userRole);
 
-	public User getUserIdByNameAndPassword(String username, String password);
+	public User getUserIdByName(String username);
+
+	boolean searchForUsernameAndPassword(String username, String password);
 
 }
