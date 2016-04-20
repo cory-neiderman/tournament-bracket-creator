@@ -18,6 +18,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function () {
+		
 	
 		$("form").validate({
 			rules : {
@@ -50,56 +51,6 @@
 			errorClass : "error"
 		});
 		
-	
-			 
-	$("#username").change(function() {
-			 
-			var usr = $("#username").val();
-			 
-			if(usr.length >= 4)
-			{
-			$("#status").html('<img src="loader.gif" align="absmiddle">&nbsp;Checking availability...');
-			 
-			    $.ajax({ 
-			    type: "POST", 
-			    url: "check.php", 
-			    data: "username="+ usr, 
-			    success: function(msg){ 
-			    
-			   $("#status").ajaxComplete(function(event, request, settings){
-			 
-			    if(msg == 'OK')
-			    {
-			        $("#username").removeClass('object_error'); // if necessary
-			        $("#username").addClass("object_ok");
-			        $(this).html('&nbsp;<img src="tick.gif" align="absmiddle">');
-			    } 
-			    else 
-			    { 
-			        $("#username").removeClass('object_ok'); // if necessary
-			        $("#username").addClass("object_error");
-			        $(this).html(msg);
-			    } 
-			    
-			   });
-			 
-			 }
-			    
-			  });
-			 
-			}
-			else
-			    {
-			    $("#status").html('<font color="red">' +
-			'The username should have at least <strong>4</strong> characters.</font>');
-			    $("#username").removeClass('object_ok'); // if necessary
-			    $("#username").addClass("object_error");
-			    }
-			 
-			});
-			 
-		
-		
 	});
 </script>
 
@@ -129,6 +80,8 @@
     		<input type="submit" value="Sign up"><br/>
 		
 		</form>
+		
+		<div style="color:red">${error}</div>
 		
 		<c:url var = "loginPage" value="/"/>
   		<p>

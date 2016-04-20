@@ -15,6 +15,7 @@
 </head>
 	<body>
 		<form id="login" action="login" method="POST">
+		<input type = "hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 		<h1>--Login--</h1><br/>
 		<br/>
     		<div2> Username : <input type="text" name="username"><br/>
@@ -25,7 +26,7 @@
     		<input type="submit" value="Login"><br/>
     		
     		<div class="background"><img src="img/brackets.png" ></div>
-		
+			<div style="color:red">${error}</div>
 		</form>
 		<a href="signUp">Sign Up</a>
 	</body>

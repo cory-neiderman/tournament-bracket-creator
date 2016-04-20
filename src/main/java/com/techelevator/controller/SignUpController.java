@@ -16,6 +16,7 @@ import com.techelevator.model.JDBCUserDAO;
 
 @Controller
 @Transactional
+@SessionAttributes("signUpError")
 public class SignUpController {
 	
 	JDBCUserDAO userDAO;
@@ -39,9 +40,13 @@ public class SignUpController {
 		
 		if(!userDAO.searchForUsername(userName)){
 			userDAO.saveUser(userName, password, role);
+			return "redirect:/";
 			
 		}
-		return "redirect:/";
+		else{
+			model.put("signUpError", "Username is already taken");
+			return "redirect:/signUp";
+		}
 		
 		
 	}

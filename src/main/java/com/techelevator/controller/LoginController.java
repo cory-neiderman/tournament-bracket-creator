@@ -17,7 +17,7 @@ import com.techelevator.model.User;
 import com.techelevator.model.UserDAO;
 
 @Controller
-@SessionAttributes("user")
+@SessionAttributes({"user", "error"})
 public class LoginController{
 	
 	UserDAO userDAO;
@@ -39,14 +39,24 @@ public class LoginController{
                                 HttpSession session){
         
         if(userDAO.getUserIdByName(username) != null && userDAO.searchForUsernameAndPassword(username, password) == true){
+        	session.removeAttribute("error");
         	session.invalidate();
             model.put("user", userDAO.getUserIdByName(username));
             return "redirect:/homepage";
         }
         else{
+        	model.put("error", "Invalid UserName / Password");
             return "redirect:/";
+            
         }
     }
+	
+	@RequestMapping(path="/logout", method=RequestMethod.POST)
+	public String logout(Map<String, Object> model, HttpSession session) {
+		model.remove("user");
+		session.removeAttribute("user");
+		return "redirect:/";
+	}
 	
 	
 
