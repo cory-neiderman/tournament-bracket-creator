@@ -13,15 +13,16 @@
 </head>
 	<body>
 		<h1>You're Logged In <c:out value="${user.userName}" /></h1>
-	<c:url var="tournamentHost" value="/tournamentHost" />	
-	<c:choose>
-    <c:when test="${user.userRole eq 'host'}">
-    	<a href="${tournamentHost}">Link to Tournament Organizer Page</a>
-    	
-    </c:when>
-    <c:otherwise>
-        <br>
-    </c:otherwise>
-</c:choose>	
+		
+	
+	
+	<c:if test="${user.userRole eq 'host'}">
+			<a href="createTournament">Create Tournament</a><br>
+	    	<a href="selectTournamentForAddingCompetitors">Add Team to Existing Tournament</a><br>
+	    	<a href="#">Schedule Matches</a><br>
+	    	<a href="#">Record Result from a Completed Match</a>
+	</c:if>
+    
+	
 	</body>
 </html>

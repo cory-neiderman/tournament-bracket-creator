@@ -48,16 +48,7 @@ public class LoginController{
         }
     }
 	
-	@RequestMapping(path="/tournamentHost", method=RequestMethod.GET)
-	public String displayTournamentHostPage(User user, HttpSession session) {
-		session.getAttribute("user");
-		if (user.getUserRole().equals("host")) {
-			return "tournamentHost";
-		} else {
-			return "homepage";
-		}
-		
-	}
+	
 
 	@RequestMapping(path="/homepage", method=RequestMethod.GET)
 	public String displayHomepage(Map<String, Object> model) {
