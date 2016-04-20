@@ -58,11 +58,11 @@
 	<body>
 		<form action="newUserSignUp" method="POST">
 		<h1>Create an account to view tournaments</h1>
-    		<label for="userName">Enter your Username:</label> <input type="text" name="userName"><br/>
+    		<label for="userName">Enter your Username:</label> <input type="text"  name="userName"><br/>
     		<br/>
-    		<label for="password">Enter your Password: </label> <input type="password" name="password"><br/>
+    		<label for="password">Enter your Password: </label> <input type="password" id="password" name="password"><br/>
     		<br/>
-    		<label for="confirmPassword">Confirm your Password: </label> <input type="password"name="password"><br/>
+    		<label for="confirmPassword">Confirm your Password: </label> <input type="password" id="confirmPassword" name="confirmPassword"><br/>
     		<br/>
     		<br/>
     		<select name ="role">
