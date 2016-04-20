@@ -7,5 +7,7 @@ public interface UserDAO {
 	public User getUserIdByName(String username);
 
 	boolean searchForUsernameAndPassword(String username, String password);
+	
+	boolean searchForUsername(String username);
 
 }

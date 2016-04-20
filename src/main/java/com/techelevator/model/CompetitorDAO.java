@@ -4,6 +4,7 @@ public interface CompetitorDAO {
 	
 	public void enterCompetitors(String[] competitors);
 
-	int getCompetitorIdByName(String competitorName);
+
+	public void enterCompetitorsIntoCompetitiorTournament(String[] competitors, int tournamentId);
 
 }

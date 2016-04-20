@@ -26,17 +26,21 @@ public class JDBCCompetitorDAO implements CompetitorDAO{
 		
 	}
 	
-	/*@Override
-	public int getCompetitorIdByName(String competitorName) {
+	@Override
+	public void enterCompetitorsIntoCompetitiorTournament(String[] competitors, int tournamentId) {
 		
-		Competitor competitor = new Competitor();
 		
-		String getCompetitorId = "SELECT competitor_id FROM competitor WHERE competitor_name = ?";
-		
-		SqlRowSet results = jdbcTemplate.queryForRowSet(getCompetitorId, competitorName);
-		
-		return 0;
-		
-	}*/
+		for(String competitor : competitors){
+			
+			String getCompetitorIDByNAme = "SELECT competitor_id FROM competitor WHERE competitor_name = ?";
+			SqlRowSet results = jdbcTemplate.queryForRowSet(getCompetitorIDByNAme, competitor);
+			results.next();
+			int competitorId=results.getInt("competitor_id");
+			String insertIntoTable ="INSERT INTO competitor_tournament(competitor_id, tournament_id) VALUES(?,?)";
+			jdbcTemplate.update(insertIntoTable, competitorId, tournamentId);
+			
+		}
+				
+	}
 
 }

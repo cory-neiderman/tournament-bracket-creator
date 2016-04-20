@@ -81,6 +81,7 @@ public class CreateTournamentController {
 	
 	@RequestMapping(path="/tournamentConfirmation", method=RequestMethod.GET)
 	public String returnToHomePage(){
+		
 		return "homepage";
 		
 	}

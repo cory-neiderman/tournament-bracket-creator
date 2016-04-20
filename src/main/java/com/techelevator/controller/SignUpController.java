@@ -37,11 +37,14 @@ public class SignUpController {
 								@RequestParam(name="password") String password,
 								@RequestParam(name="role") String role){
 		
-		
-		userDAO.saveUser(userName, password, role);
-		//model.put("user", userDAO.getUserIdByNameAndPassword(userName, password));
-		// Testing
-		
+		if(!userDAO.searchForUsername(userName)){
+			userDAO.saveUser(userName, password, role);
+			
+		}
 		return "redirect:/";
+		
+		
 	}
+	
+	
 }

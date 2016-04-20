@@ -46,7 +46,9 @@ public class AddTeamController {
 	@RequestMapping(path="/addCompetitorsToTournament", method=RequestMethod.GET)
 	public String displayAddCompetitorsForm(Map<String, Object> model,
 													@RequestParam(name="tournamentId") int tournamentId){
-		model.put("tournamentId", tournamentId);
+		Tournament tournament = new Tournament();
+		tournament.setTournamentId(tournamentId);
+		model.put("tournament", tournament);
 		int maxTeams = tournamentDAO.getMaxTeamsByTournamentId(tournamentId);
 		model.put("maxTeams", maxTeams);
 		
@@ -59,7 +61,8 @@ public class AddTeamController {
 		
 		String[] allCompetitors = competitorName.split(",");
 		competitorDAO.enterCompetitors(allCompetitors);
-		
+		Tournament tournament = (Tournament)model.get("tournament");
+		competitorDAO.enterCompetitorsIntoCompetitiorTournament(allCompetitors, tournament.getTournamentId());
 		model.put("allCompetitors", allCompetitors);
 		
 		return "redirect:/enterTeamsPage";

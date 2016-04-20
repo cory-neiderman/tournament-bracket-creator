@@ -5,6 +5,8 @@
 
 <html>
 <head>
+<header><img id="logo"img src="http://blog.flamingtext.com/blog/2016/04/19/flamingtext_com_1461026267_370071663.png"/><br/>
+	</header>
 	<title>Verify Tournament Creation</title>
 	<c:url var="cssHref" value="/css/site.css" />
 	<link type="text/css" rel="stylesheet" href="${cssHref}"/>

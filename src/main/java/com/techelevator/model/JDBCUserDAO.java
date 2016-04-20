@@ -30,7 +30,7 @@ public class JDBCUserDAO implements UserDAO {
 		String saltString = new String(Base64.encode(salt));
 		String passwordHash = passwordHasher.computeHash(password, salt);
 
-		jdbcTemplate.update("INSERT INTO app_user(user_name, password, salt, user_role) VALUES (?,?,?,?)", userName,
+		jdbcTemplate.update("INSERT INTO app_user(user_name, password, salt, user_role) VALUES (?,?,?,?)",userName,
 				passwordHash, saltString, userRole);
 
 	}
@@ -41,15 +41,26 @@ public class JDBCUserDAO implements UserDAO {
 							      "WHERE UPPER(user_name) = ?";
 		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForUser, username.toUpperCase());
-		
 		if (results.next()) {
-
 			String storedSalt = results.getString("salt");
-		
 			String storedPassword = results.getString("password");
 			String passwordHash = passwordHasher.computeHash(password, Base64.decode(storedSalt));
-		
 			return storedPassword.equals(passwordHash);
+		} else {
+			return false;
+		}
+		
+		
+	}
+	
+	public boolean searchForUsername(String username) {
+		String sqlSearchForUser = "SELECT * "+
+							      "FROM app_user "+
+							      "WHERE UPPER(user_name) = ?";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForUser, username.toUpperCase());
+		if (results.next()) {
+			return true;
 		} else {
 			return false;
 		}
