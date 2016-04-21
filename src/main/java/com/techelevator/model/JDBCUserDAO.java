@@ -69,7 +69,7 @@ public class JDBCUserDAO implements UserDAO {
 	}
 
 	@Override
-	public User getUserIdByName(String username) {
+	public User getUserByName(String username) {
 
 		String sqlQueryForId = "SELECT app_user_id, user_role FROM app_user WHERE user_name=?";
 

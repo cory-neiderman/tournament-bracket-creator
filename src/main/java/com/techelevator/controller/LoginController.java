@@ -38,10 +38,10 @@ public class LoginController{
                                 @RequestParam(name="password") String password,
                                 HttpSession session){
         
-        if(userDAO.getUserIdByName(username) != null && userDAO.searchForUsernameAndPassword(username, password) == true){
+        if(userDAO.getUserByName(username) != null && userDAO.searchForUsernameAndPassword(username, password) == true){
         	session.removeAttribute("error");
         	session.invalidate();
-            model.put("user", userDAO.getUserIdByName(username));
+            model.put("user", userDAO.getUserByName(username));
             return "redirect:/homepage";
         }
         else{

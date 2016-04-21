@@ -1,22 +1,14 @@
-#logo{
-	width: 1190px;
-	height: 195px;
-	text-align: center; 
-	
-}
-
 html {
-	Background-color : #70766f;
+    Background-color : #70766f;
 }
-
-.background {
-	position: absolute;
-    right: 200px;
-    width: 300px;
-    border: 4px solid black;
-    padding: 20px;
+h2{ 
+    float: right;
 }
-div2{ 
-	
-	font-style: 30px;
+h1 {
+font-family: ‘Arial Black’, Gadget, sans-serif;
+font-size: 28px;
+}
+div2 {
+    font-size: 20px;
+    
 }

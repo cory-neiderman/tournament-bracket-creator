@@ -51,6 +51,12 @@
 			errorClass : "error"
 		});
 		
+		function userNameLookup(name){
+			
+			
+			
+		}
+		
 	});
 </script>
 
@@ -65,7 +71,7 @@
 	<body>
 		<form action="newUserSignUp" method="POST">
 		<h1>Create an account to view tournaments</h1>
-    		<label for="userName">Enter your Username:</label> <input type="text"  name="userName"><br/>
+    		<label for="userName">Enter your Username:</label> <input type="text"  name="userName" onblur="userNameLookup(this.value)"><br/>
     		<br/>
     		<label for="password">Enter your Password: </label> <input type="password" id="password" name="password"><br/>
     		<br/>
