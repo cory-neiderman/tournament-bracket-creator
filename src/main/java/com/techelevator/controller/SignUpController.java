@@ -53,11 +53,7 @@ public class SignUpController {
 		
 		
 	}
-	@RequestMapping(path="/signUp/{userName}", method=RequestMethod.GET)
-	public boolean searchForUsername(@PathVariable String userName){
-		
-		return userDAO.searchForUsername(userName);
-	}
+	
 	
 	
 }

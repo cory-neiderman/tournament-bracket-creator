@@ -7,5 +7,6 @@ public interface TournamentDAO {
 	public void createTournament(Tournament tournament);
 	public List<Tournament> getListOfTournamentsByUserId(int userId);
 	public int getMaxTeamsByTournamentId(int tournamentId);
+	public List<Tournament> getListOfAllTournaments();
 	
 }

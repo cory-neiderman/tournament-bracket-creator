@@ -65,6 +65,25 @@ public class JDBCTournamentDAO implements TournamentDAO {
 		
 		return maxTeams;
 	}
+	@Override
+	public List<Tournament> getListOfAllTournaments() {
+		
+		List<Tournament> tournamentList = new ArrayList<>();
+		String getAllTournaments = "SELECT * from tournament";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(getAllTournaments);
+		
+		while(results.next()){
+			Tournament tournament = new Tournament();
+			tournament.setTournamentName(results.getString("tournament_name"));
+			tournament.setTournamentId(results.getInt("tournament_id"));
+			tournamentList.add(tournament);
+		}
+		
+		
+		
+		
+		return tournamentList;
+	}
 		
 	
 

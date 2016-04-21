@@ -1,33 +1,69 @@
-<!DOCTYPE>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+		
+		
+	<c:import url="/WEB-INF/jsp/header.jsp" />
+		
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+	    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.js "></script>
+	    <script src="https://cdn.jsdelivr.net/jquery.timeago/1.4.1/jquery.timeago.min.js"></script>
+	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	    <script src="http://mymaplist.com/js/vendor/TweenLite.min.js"></script>
+	    
+	    <c:url var="cssHref" value="/site.css" />
+	    <script src="http://mymaplist.com/js/vendor/TweenLite.min.js"></script>
+	    
+		<link rel="stylesheet" type="text/css" href="${cssHref}">
+		
+	<script type="text/javascript">	
+		$(document).ready(function(){
+  $(document).mousemove(function(e){
+     TweenLite.to($('body'), 
+        .5, 
+        { css: 
+            {
+                backgroundPosition: ""+ parseInt(event.pageX/8) + "px "+parseInt(event.pageY/'12')+"px, "+parseInt(event.pageX/'15')+"px "+parseInt(event.pageY/'15')+"px, "+parseInt(event.pageX/'30')+"px "+parseInt(event.pageY/'30')+"px"
+            }
+        });
+  });
+});
+</script>
 
-<html>
-<head>
-	<c:url var="cssHref" value="/css/site.css" />
-		<link type="text/css" rel="stylesheet" href="${cssHref}"/>
-	<header><img id="logo"img src="http://blog.flamingtext.com/blog/2016/04/19/flamingtext_com_1461026267_370071663.png"/><br/>
-	</header>
-	<title>Login</title>
-	<c:url var="cssHref" value="/css/site.css" />
-	<link type="text/css" rel="stylesheet" href="${cssHref}"/>
-</head>
-	<body>
-		<form id="login" action="login" method="POST">
-		<input type = "hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-		<h1>--Login--</h1><br/>
-		<br/>
-    		<div2> Username : <input type="text" name="username"><br/>
-    		<br/>
-    		Password : <input type="password" name="password"><br/>
-    		<br/> </div2>
-    	
-    		<input type="submit" value="Login"><br/>
-    		
-    		<div class="background"><img src="img/brackets.png" ></div>
-			<div style="color:red">${error}</div>
-		</form>
-		<a href="signUp">Sign Up</a>
-	</body>
+<body>
+<div class="container">
+    <div class="row vertical-offset-100">
+        <div class="col-md-4 col-md-offset-4">
+    		<div class="panel panel-default">
+			  	<div class="panel-heading">
+			  	<form id="login" action="login" method="POST">
+			  	<input type = "hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+			    	<h3 class="panel-title">Please sign in</h3>
+			 	</div>
+			  	<div class="panel-body">
+			    	<form accept-charset="UTF-8" role="form">
+                    <fieldset>
+			    	  	<div class="form-group">
+			    		    <input class="form-control" placeholder="Username" name="username" type="text">
+			    		</div>
+			    		<div class="form-group">
+			    			<input class="form-control" placeholder="Password" name="password" type="password" >
+			    		</div>
+			    		<div class="checkbox">
+			    	    	<label>
+			    	    		<input name="remember" type="checkbox" value="Remember Me"> Remember Me
+			    	    	</label>
+			    	    </div>
+			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+			    		<div style="color:red">${error}</div>
+			    	</fieldset>
+			      	</form>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
 </html>
+	

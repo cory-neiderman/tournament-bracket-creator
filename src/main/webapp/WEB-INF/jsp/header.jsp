@@ -34,23 +34,36 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
-                    <c:url var="homePageHref" value="/" />
-                    <li><a href="${homePageHref}">Home</a></li>
                     <c:if test="${not empty currentUser}">
                         <c:url var="dashboardHref" value="/users/${currentUser}" />
                     </c:if>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-default">
                     <c:choose>
                         <c:when test="${empty user}">
-                            <c:url var="newUserHref" value="/users/new" />
-                            <li><a href="${newUserHref}">Sign Up</a></li>
-                            <c:url var="loginHref" value="/login" />
-                            <li><a href="${loginHref}">Log In</a></li>
+                          <c:url var="homepageHref" value="/homepage" />
+                   			<li><a href="${homepageHref}">Home</a></li>
+                   			<c:url var="loginHref" value="/" />
+							<li><a href="${loginHref}">Log In</a></li>
+                            <c:url var="signUpHref" value="/signUp" />
+                            <li><a href="${signUpHref}">Sign Up</a></li>
                             
                         </c:when>
-                        <c:when test="{user == 'host'}">
-                        
+                        <c:when test="${user.userRole eq 'host'}">
+                        	  <c:url var="createTournamentHref" value="/createTournament" />
+                            <li><a href="${createTournamentHref}">Tournament Creator</a></li>
+                        	  <c:url var="selectTournamentForAddingCompetitorsHref" value="/selectTournamentForAddingCompetitors" />
+                            <li><a href="${selectTournamentForAddingCompetitorsHref}">Add Teams</a></li>
+                        	  <c:url var="scheduleMatchesHref" value="/scheduleMatches" />
+                            <li><a href="${scheduleMatchesHref}">Scheduler</a></li>
+                        	  <c:url var="recordResultsHref" value="/recordResults" />
+                            <li><a href="${recordResultsHref}">Track Results</a></li>
+                         
+                            <c:url var="logoutAction" value="/logout" />
+                            <form id="logoutForm" action="${logoutAction}" method="POST"></form>
+                            <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+                            <li><a id="logoutLink" href="#">Log Out</a></li>
+                        	
                         </c:when>
                         <c:otherwise>
                             <c:url var="logoutAction" value="/logout" />
@@ -58,13 +71,11 @@
                             <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
                             
                             <li><a id="logoutLink" href="#">Log Out</a></li>
-                    
-                            
                         </c:otherwise>
                         
                     </c:choose>
                     <c:url var="tournamentDetailsHref" value="/tournamentDetails" />
-                            <li><a href="${tournamentDetailsHref}">Tournament Details</a></li>
+                            <li><a href="${tournamentDetailsHref}">Select Tournament to View</a></li>
                 </ul>
             </div>
         </nav>
