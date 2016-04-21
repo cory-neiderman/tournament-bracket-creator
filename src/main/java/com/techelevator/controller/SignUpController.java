@@ -1,5 +1,7 @@
 package com.techelevator.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +55,6 @@ public class SignUpController {
 	}
 	@RequestMapping(path="/signUp/{userName}", method=RequestMethod.GET)
 	public boolean searchForUsername(@PathVariable String userName){
-		
 		
 		return userDAO.searchForUsername(userName);
 	}

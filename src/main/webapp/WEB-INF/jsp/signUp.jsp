@@ -6,6 +6,7 @@
 <html>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	    <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
 	    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
 	    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.js "></script>
 	    <script src="https://cdn.jsdelivr.net/jquery.timeago/1.4.1/jquery.timeago.min.js"></script>
@@ -53,8 +54,9 @@
 		
 		$("#userName").change(function() {
 			
-			var applicationURL = "http://localhost:8080/greg-capstone/signUp/";
+			var applicationURL = "http://localhost:8080/capstone/signUp/";
 			var userName=$("#userName").val();
+			alert(userName);
 			
 			$.ajax({
 				url : applicationURL+userName,
@@ -66,14 +68,15 @@
 				console.log(errorMessage);
 				console.log(status);
 				console.log(xhr);
-				alert("test");
+				console.log("FAIL");
+				
 			});
 			
 			
 			});
 		
-		function searchForUserName(bool){
-			alert(bool);
+		function searchForUserName(event){
+		
 			
 		}
 		
