@@ -1,5 +1,8 @@
 package com.techelevator.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +44,32 @@ public class JDBCCompetitorDAO implements CompetitorDAO{
 			
 		}
 				
+	}
+
+	@Override
+	public List<Competitor> getCompetitorListByTournamentId(int tournamentId) {
+		
+		List<Competitor> competitorList = new ArrayList<>();
+		
+		String getListOfCompetitors = 	"SELECT * " + 
+										"FROM competitor " + 
+										"INNER JOIN " + 
+										"(competitor_tournament INNER JOIN tournament " + 
+										"ON tournament.tournament_id = competitor_tournament.tournament_id) " + 
+										"ON competitor.competitor_id = competitor_tournament.competitor_id " + 
+										"AND competitor_tournament.tournament_id = ?";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(getListOfCompetitors, tournamentId);
+		
+		while (results.next()) {
+			Competitor competitor = new Competitor();
+			competitor.setCompetitorId(results.getInt("competitor_id"));
+			competitor.setCompetitorName(results.getString("competitor_name"));	
+			competitorList.add(competitor);
+			
+		}
+		 
+		return competitorList;
 	}
 
 }

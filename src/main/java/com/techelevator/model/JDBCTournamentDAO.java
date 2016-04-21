@@ -84,6 +84,23 @@ public class JDBCTournamentDAO implements TournamentDAO {
 		
 		return tournamentList;
 	}
+	
+	@Override
+	public Tournament getTournamentById(int tournamentId) {
+		
+		String getTournament = "SELECT * FROM tournament WHERE tournament_id = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(getTournament, tournamentId);
+		results.next();
+		Tournament tournament = new Tournament();
+		tournament.setSport(results.getString("sport"));
+		tournament.setTournamentName(results.getString("tournament_name"));
+		tournament.setStartDate(LocalDate.parse(results.getString("start_date")));
+		tournament.setEndDate(LocalDate.parse(results.getString("end_date")));
+		tournament.setMaxTeams(results.getInt("max_teams"));
+		tournament.setTournamentId(results.getInt("tournament_id"));
+		
+		return tournament;
+	}
 		
 	
 

@@ -13,19 +13,23 @@
 	    <c:url var="cssHref" value="/site.css" />
 		<link rel="stylesheet" type="text/css" href="${cssHref}">
 		
-	<h1>Select a Tournament to Add Competitors To</h1>
-    <ul>
-    <c:forEach var="tournament" items="${tournamentList}">
-    	<li>
-    	<c:url value="/displayTournament" var="displayTournament">
-			<c:param name="tournamentId" value="${tournament.tournamentId}"/>
-		</c:url>
-    		<a href="${displayTournament}"><c:out value="${tournament.tournamentName}"/></a>
-    	</li>
-    		<c:out value="${tournament.tournamentId}"/>
-    	<li>
+	 <div class="row">
+   <div class="col-md-4">
+       
+      
+	
+	<table class="table-condensed" style="width:100%">
+    <c:forEach var="competitor" items="${competitorList}">
+    	
+         <tr>
+           <td class="col-md-5"><div class="input-group"><div class="form-control"><c:out value="${competitor.competitorName}"/></div><span class="input-group-addon"><span class="badge pull-right">1</span></span></div></td>
+          
+         </tr>
+    		
     	
     	</c:forEach>
-    </ul>
+    </table>
+   </div>
+ </div>
 	</body>
 </html>

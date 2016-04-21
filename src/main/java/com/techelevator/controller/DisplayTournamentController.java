@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.techelevator.model.Competitor;
 import com.techelevator.model.CompetitorDAO;
 import com.techelevator.model.JDBCCompetitorDAO;
 import com.techelevator.model.JDBCTournamentDAO;
@@ -32,12 +34,25 @@ public class DisplayTournamentController {
 		this.competitorDAO=competitorDAO;
 	}
 	
-	@RequestMapping(path="/tournamentDetails", method=RequestMethod.GET)
+	@RequestMapping(path="/displayAllTournaments", method=RequestMethod.GET)
 	public String displayListOfAllTournaments(Map<String, Object> model){
 		List<Tournament> tournamentList = new ArrayList<>();
 		tournamentList=tournamentDAO.getListOfAllTournaments();
 		model.put("tournamentList", tournamentList);
 		
-		return "displayTournament";
+		return "displayAllTournaments";
+	}
+	@RequestMapping(path="/displayTournamentBracket", method=RequestMethod.GET)
+	public String displayTournamentById(Map<String, Object> model,
+										@RequestParam(name="tournamentId") int tournamentId){
+		
+		Tournament tournament = tournamentDAO.getTournamentById(tournamentId);
+		model.put("tournament", tournament);
+		
+		List<Competitor> competitorList = new ArrayList<>();
+		competitorList = competitorDAO.getCompetitorListByTournamentId(tournamentId);
+		model.put("competitorList", competitorList);
+		
+		return "displayTournamentBracket";
 	}
 }

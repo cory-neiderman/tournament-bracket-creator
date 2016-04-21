@@ -38,19 +38,23 @@
                         <c:url var="dashboardHref" value="/users/${currentUser}" />
                     </c:if>
                 </ul>
-                <ul class="nav navbar-nav navbar-default">
+                
                     <c:choose>
                         <c:when test="${empty user}">
+                        <ul class="nav navbar-nav navbar-default">
                           <c:url var="homepageHref" value="/homepage" />
                    			<li><a href="${homepageHref}">Home</a></li>
                    			<c:url var="loginHref" value="/" />
 							<li><a href="${loginHref}">Log In</a></li>
                             <c:url var="signUpHref" value="/signUp" />
                             <li><a href="${signUpHref}">Sign Up</a></li>
-                            
+                                  </ul>
                         </c:when>
+                  
+                       
                         <c:when test="${user.userRole eq 'host'}">
-                        	  <c:url var="createTournamentHref" value="/createTournament" />
+                        	<ul class="nav navbar-nav navbar-left">
+                          <c:url var="createTournamentHref" value="/createTournament" />
                             <li><a href="${createTournamentHref}">Tournament Creator</a></li>
                         	  <c:url var="selectTournamentForAddingCompetitorsHref" value="/selectTournamentForAddingCompetitors" />
                             <li><a href="${selectTournamentForAddingCompetitorsHref}">Add Teams</a></li>
@@ -58,25 +62,32 @@
                             <li><a href="${scheduleMatchesHref}">Scheduler</a></li>
                         	  <c:url var="recordResultsHref" value="/recordResults" />
                             <li><a href="${recordResultsHref}">Track Results</a></li>
-                         
-                            <c:url var="logoutAction" value="/logout" />
+                         </ul>
+                       
                             <form id="logoutForm" action="${logoutAction}" method="POST"></form>
+                            
+                            <c:url var="logoutAction" value="/logout" />
                             <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+                              <ul class="nav navbar-nav navbar-right">
+                              	<c:url var="tournamentDetailsHref" value="/displayAllTournaments" />
+                            		<li><a href="${tournamentDetailsHref}">Select Tournament to View</a></li>
                             <li><a id="logoutLink" href="#">Log Out</a></li>
-                        	
+                        </ul>
                         </c:when>
                         <c:otherwise>
+                        	<form id="logoutForm" action="${logoutAction}" method="POST"></form>
                             <c:url var="logoutAction" value="/logout" />
-                            <form id="logoutForm" action="${logoutAction}" method="POST"></form>
-                            <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
                             
-                            <li><a id="logoutLink" href="#">Log Out</a></li>
+                            <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+                            	<ul class="nav navbar-nav navbar-right">
+                            	<c:url var="tournamentDetailsHref" value="/displayAllTournaments" />
+                            		<li><a href="${tournamentDetailsHref}">Select Tournament to View</a></li>
+                            		<li><a id="logoutLink" href="#">Log Out</a></li>
+                        </ul>
                         </c:otherwise>
                         
+                        
                     </c:choose>
-                    <c:url var="tournamentDetailsHref" value="/tournamentDetails" />
-                            <li><a href="${tournamentDetailsHref}">Select Tournament to View</a></li>
-                </ul>
             </div>
         </nav>
         <c:if test="${not empty currentUser}">
