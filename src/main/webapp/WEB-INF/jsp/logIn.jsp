@@ -12,7 +12,7 @@
 	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	    <script src="http://mymaplist.com/js/vendor/TweenLite.min.js"></script>
 	    
-	    <c:url var="cssHref" value="/site.css" />
+	    <c:url var="cssHref" value="/css/site.css" />
 	    <script src="http://mymaplist.com/js/vendor/TweenLite.min.js"></script>
 	    
 		<link rel="stylesheet" type="text/css" href="${cssHref}">
@@ -39,7 +39,7 @@
 			  	<div class="panel-heading">
 			  	<form id="login" action="login" method="POST">
 			  	<input type = "hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-			    	<h3 class="panel-title">Please sign in</h3>
+			    	<h3 id="signIn"class="panel-title">Please sign in</h3>
 			 	</div>
 			  	<div class="panel-body">
 			    	<form accept-charset="UTF-8" role="form">

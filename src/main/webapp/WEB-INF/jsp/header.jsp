@@ -8,7 +8,7 @@
         <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.js "></script>
         <script src="https://cdn.jsdelivr.net/jquery.timeago/1.4.1/jquery.timeago.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <c:url var="cssHref" value="/site.css" />
+        <c:url var="cssHref" value="/css/site.css" />
         <link rel="stylesheet" type="text/css" href="${cssHref}">
         
         <script type="text/javascript">
@@ -34,14 +34,14 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
-                    <c:if test="${not empty currentUser}">
-                        <c:url var="dashboardHref" value="/users/${currentUser}" />
+                    <c:if test="${not empty user}">
+                        <c:url var="dashboardHref" value="/users/${user}" />
                     </c:if>
                 </ul>
                 
                     <c:choose>
                         <c:when test="${empty user}">
-                        <ul class="nav navbar-nav navbar-default">
+                        <ul class="nav navbar-nav navbar-right">
                           <c:url var="homepageHref" value="/homepage" />
                    			<li><a href="${homepageHref}">Home</a></li>
                    			<c:url var="loginHref" value="/" />
@@ -63,22 +63,20 @@
                         	  <c:url var="recordResultsHref" value="/recordResults" />
                             <li><a href="${recordResultsHref}">Track Results</a></li>
                          </ul>
-                       
+                       		<c:url var="logoutAction" value="/logout" />
                             <form id="logoutForm" action="${logoutAction}" method="POST"></form>
-                            
-                            <c:url var="logoutAction" value="/logout" />
                             <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+                            
                               <ul class="nav navbar-nav navbar-right">
                               	<c:url var="tournamentDetailsHref" value="/displayAllTournaments" />
+                            	<c:url var="homepageHref" value="/homepage" />
+                   					<li><a href="${homepageHref}">Home</a></li>
                             		<li><a href="${tournamentDetailsHref}">Select Tournament to View</a></li>
-                            <li><a id="logoutLink" href="#">Log Out</a></li>
+                            		<li><a id="logoutLink" href="#">Log Out</a></li>
                         </ul>
                         </c:when>
                         <c:otherwise>
-                        	<form id="logoutForm" action="${logoutAction}" method="POST"></form>
-                            <c:url var="logoutAction" value="/logout" />
-                            
-                            <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+                        	
                             	<ul class="nav navbar-nav navbar-right">
                             	<c:url var="tournamentDetailsHref" value="/displayAllTournaments" />
                             		<li><a href="${tournamentDetailsHref}">Select Tournament to View</a></li>
@@ -90,7 +88,7 @@
                     </c:choose>
             </div>
         </nav>
-        <c:if test="${not empty currentUser}">
-            <p id="currentUser">Current User: ${currentUser}</p>
+        <c:if test="${not empty user}">
+            <p id="currentUser">Current User: ${user}</p>
         </c:if>       
         <div class="container"></div>

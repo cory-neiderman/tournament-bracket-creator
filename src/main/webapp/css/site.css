@@ -7,6 +7,7 @@ h2{
 h1 {
 font-family: ‘Arial Black’, Gadget, sans-serif;
 font-size: 28px;
+color: white;
 }
 div2 {
     font-size: 20px;
@@ -20,4 +21,36 @@ body{
 
 .vertical-offset-100{
     padding-top:100px;
+}
+#signUp{
+	color: white;
+}
+
+#header{
+	color: white;
+}
+form{
+	color: white;
+	display: table;
+}
+label{
+	display: table-cell;
+}
+input{
+	display: table-cell;
+}
+#submit{
+	color: black;
+}
+#links{
+	color: white;
+}
+a{
+	color: white;
+}
+input, select, textarea{
+    color: black;
+}
+#signIn {
+	color: black;
 }

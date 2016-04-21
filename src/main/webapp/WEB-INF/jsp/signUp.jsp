@@ -9,7 +9,7 @@
         <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.js "></script>
         <script src="https://cdn.jsdelivr.net/jquery.timeago/1.4.1/jquery.timeago.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <c:url var="cssHref" value="/site.css" />
+        <c:url var="cssHref" value="/css/site.css" />
         <link rel="stylesheet" type="text/css" href="${cssHref}">
         
 <c:url var="pwValidationSrc" value="/passwordValidation.js" />
@@ -84,23 +84,22 @@ $("#userName").change(function() {
     <title>Sign Up</title>
 </head>
     <body>
-        <form action="newUserSignUp" method="POST">
-        <h1>Create Your {BRAKIT} Account Here!</h1>
+        <form id="signUp" action="newUserSignUp" method="POST">
+        <h1 id="header">Create Your {BRAKIT} Account Here!</h1>
         <br/>
-            <label for="userName">Enter your Username:</label> <input type="text"  name="userName" ><br/>
-            <br/>
-            <label for="password">Enter your Password: </label> <input type="password" id="password" name="password"><br/>
-            <br/>
-            <label for="confirmPassword">Confirm your Password: </label> <input type="password" id="confirmPassword" name="confirmPassword"><br/>
-            <br/>
-            <br/>
+            <label for="userName" id="userName">Enter your Username:</label> <input type="text"  name="userName" ><br/>
+            <br>
+            <label for="password" id="password">Enter your Password: </label> <input type="password" id="password" name="password"><br/>
+            <br>
+            <label for="confirmPassword" id="confirmPassword" >Confirm your Password: </label> <input type="password" id="confirmPassword" name="confirmPassword"><br/>
+            <br>
+            <br>
             <select name ="role">
               <option value="player">Player</option>
               <option value="host">Host</option>
-              <br/>
             </select>
             <input type="submit" value="Sign up"><br/>
-            <br/>
+            <br>
         
         </form>
         
