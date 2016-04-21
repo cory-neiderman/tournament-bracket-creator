@@ -65,10 +65,8 @@ CREATE TABLE game (
     competitor_1_score integer,
     competitor_2_score integer,
     game_date date,
-    CONSTRAINT pk_game_game_id PRIMARY KEY (game_id)
-    CONSTRAINT fk_tournament_id FOREIGN KEY (tournament_id) REFERENCES tournament(tournament_id),
-    CONSTRAINT fk_competitor_1 FOREIGN KEY (competitor_1) REFERENCES competitor(competitor_id),
-    CONSTRAINT fk_competitor_2 FOREIGN KEY (competitor_2) REFERENCES competitor(competitor_id)
+    CONSTRAINT pk_game_game_id PRIMARY KEY (game_id),
+    CONSTRAINT fk_tournament_id FOREIGN KEY (tournament_id) REFERENCES tournament(tournament_id)
     );
 
 CREATE TABLE app_user_competitor (

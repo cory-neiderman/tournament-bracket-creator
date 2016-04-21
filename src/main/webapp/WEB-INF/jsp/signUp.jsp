@@ -10,7 +10,7 @@
 	    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.js "></script>
 	    <script src="https://cdn.jsdelivr.net/jquery.timeago/1.4.1/jquery.timeago.min.js"></script>
 	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	    <c:url var="cssHref" value="/site.css" />
+	    <c:url var="cssHref" value="/css/site.css" />
 		<link rel="stylesheet" type="text/css" href="${cssHref}">
 		
 <c:url var="pwValidationSrc" value="/passwordValidation.js" />
@@ -51,9 +51,29 @@
 			errorClass : "error"
 		});
 		
-		function userNameLookup(name){
+		$("#userName").change(function() {
+			
+			var applicationURL = "http://localhost:8080/greg-capstone/signUp/";
+			var userName=$("#userName").val();
+			
+			$.ajax({
+				url : applicationURL+userName,
+				type : "GET",
+				dataType : "json"
+			}).success(function(result) {
+				searhForUserName(result);
+			}).fail(function(xhr, status, errorMessage) {
+				console.log(errorMessage);
+				console.log(status);
+				console.log(xhr);
+				alert("test");
+			});
 			
 			
+			});
+		
+		function searchForUserName(bool){
+			alert(bool);
 			
 		}
 		
@@ -71,7 +91,7 @@
 	<body>
 		<form action="newUserSignUp" method="POST">
 		<h1>Create an account to view tournaments</h1>
-    		<label for="userName">Enter your Username:</label> <input type="text"  name="userName" onblur="userNameLookup(this.value)"><br/>
+    		<label for="userName">Enter your Username:</label> <input type="text"  id="userName" name="userName" ><br/>
     		<br/>
     		<label for="password">Enter your Password: </label> <input type="password" id="password" name="password"><br/>
     		<br/>
@@ -87,7 +107,7 @@
 		
 		</form>
 		
-		<div style="color:red">${error}</div>
+		<div style="color:red">${signUpError}</div>
 		
 		<c:url var = "loginPage" value="/"/>
   		<p>

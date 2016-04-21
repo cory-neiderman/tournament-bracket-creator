@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,11 +45,17 @@ public class SignUpController {
 			
 		}
 		else{
-			model.put("signUpError", "Username is already taken");
+			//model.put("signUpError", "Username is already taken");
 			return "redirect:/signUp";
 		}
 		
 		
+	}
+	@RequestMapping(path="/signUp/{userName}", method=RequestMethod.GET)
+	public boolean searchForUsername(@PathVariable String userName){
+		
+		
+		return userDAO.searchForUsername(userName);
 	}
 	
 	
