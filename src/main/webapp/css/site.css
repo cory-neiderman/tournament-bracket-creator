@@ -1,5 +1,5 @@
-html {
-    Background-color : #70766f;
+html{
+    Background-color : #acacac;
 }
 h2{ 
     float: right;
@@ -11,4 +11,13 @@ font-size: 28px;
 div2 {
     font-size: 20px;
     
+}
+body{
+    background: url(http://mymaplist.com/img/parallax/back.png);
+    background-color: #444;
+    background: url(http://mymaplist.com/img/parallax/pinlayer2.png),url(http://mymaplist.com/img/parallax/pinlayer1.png),url(http://mymaplist.com/img/parallax/back.png);    
+}
+
+.vertical-offset-100{
+    padding-top:100px;
 }

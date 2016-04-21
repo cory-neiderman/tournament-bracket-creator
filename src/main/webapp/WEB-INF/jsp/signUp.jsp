@@ -1,9 +1,9 @@
-<!DOCTYPE>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
-<html>
+		
+	<c:import url="/WEB-INF/jsp/header.jsp" />
+	
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
@@ -65,12 +65,11 @@
 <head>
 	<title>Sign Up</title>
 </head>
-<header><img id="logo"img src="http://blog.flamingtext.com/blog/2016/04/19/flamingtext_com_1461026267_370071663.png"/><br/>
-	</header>
-	
+
 	<body>
 		<form action="newUserSignUp" method="POST">
-		<h1>Create an account to view tournaments</h1>
+		<h1>Create Your {BRAKIT} Account Here!</h1>
+		<br/>
     		<label for="userName">Enter your Username:</label> <input type="text"  name="userName" onblur="userNameLookup(this.value)"><br/>
     		<br/>
     		<label for="password">Enter your Password: </label> <input type="password" id="password" name="password"><br/>
@@ -84,6 +83,7 @@
 			  <br/>
 			</select>
     		<input type="submit" value="Sign up"><br/>
+    		<br/>
 		
 		</form>
 		
@@ -96,7 +96,7 @@
   				<div class="col-sm-6">
 			<strong>Password Rules:</strong>
 			<ul>
-				<li>Must be at least 10 characters long</li>
+				<li>Must be at least 8 characters long</li>
 				<li>Must contain at least 3 of the following 4 types of characters:
 					<ol>
 						<li>Uppercase letter (A-Z)</li>
