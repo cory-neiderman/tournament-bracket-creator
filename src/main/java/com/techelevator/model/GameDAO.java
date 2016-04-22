@@ -2,6 +2,9 @@ package com.techelevator.model;
 
 public interface GameDAO {
 	
-	public void createGames(String[] allCompetitors);
+	
+
+	void createGames(int maxTeams, int tournamentId);
+	void addTeamsToGames(String[] allCompetitors, int tournamentId);
 
 }

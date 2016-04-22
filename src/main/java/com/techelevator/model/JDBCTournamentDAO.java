@@ -106,6 +106,12 @@ public class JDBCTournamentDAO implements TournamentDAO {
 		
 		return tournament;
 	}
+	@Override
+	public int getTournamentIdByName(String tournamentName) {
+		String getTournament = "SELECT * FROM tournament WHERE tournament_name = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(getTournament, tournamentName);
+		return results.getInt("tournament_id");
+	}
 		
 	
 

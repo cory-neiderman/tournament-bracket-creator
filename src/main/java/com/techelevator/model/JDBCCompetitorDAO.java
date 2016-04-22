@@ -88,4 +88,13 @@ public class JDBCCompetitorDAO implements CompetitorDAO{
 		
 	}
 
+	@Override
+	public int getCompetitorIdByName(String competitorName) {
+		String sqlSearchForCompetitor = "SELECT * FROM competitor WHERE UPPER(competitor_name) = ?";
+
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForCompetitor, competitorName.toUpperCase());
+		
+		return results.getInt("competitor_id");
+	}
+
 }

@@ -86,7 +86,7 @@
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                        <form id="signUp" action="newUserSignUp" method="POST">
+                <form id="signUp" action="newUserSignUp" method="POST">
                 <input type = "hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
                     <h3 id="signIn"class="panel-title">Create Your {BRAKIT} Account Here!</h3>
                 </div>
@@ -94,7 +94,7 @@
                     <form accept-charset="UTF-8" role="form">
                     <fieldset>
                         <div class="form-group">
-                            <input class="form-control" placeholder="Create Username" name="userName" type="text">
+                            <input class="form-control" placeholder="Create Username" id="userName" name="userName" type="text">
                         </div>
                         <div class="form-group">
                             <input class="form-control" placeholder="Create Password" name="password" type="password" >

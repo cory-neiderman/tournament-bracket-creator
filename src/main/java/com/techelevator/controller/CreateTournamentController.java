@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.techelevator.model.GameDAO;
+import com.techelevator.model.JDBCGameDAO;
 import com.techelevator.model.JDBCTournamentDAO;
 import com.techelevator.model.Tournament;
 import com.techelevator.model.TournamentDAO;
@@ -29,10 +31,12 @@ import com.techelevator.model.User;
 public class CreateTournamentController {
 	
 	private TournamentDAO tournamentDAO;
+	private GameDAO gameDAO;
 	
 	@Autowired
-	public CreateTournamentController(JDBCTournamentDAO tournamentDAO) {
+	public CreateTournamentController(JDBCTournamentDAO tournamentDAO, JDBCGameDAO gameDAO) {
 		this.tournamentDAO = tournamentDAO;
+		this.gameDAO = gameDAO;
 		
 	}
 	@RequestMapping(path="/createTournament")
@@ -75,7 +79,7 @@ public class CreateTournamentController {
 		
 			Tournament tournament = (Tournament)model.get("tournament");
 			tournamentDAO.createTournament(tournament);
-		
+			gameDAO.createGames(tournament.getMaxTeams(), tournamentDAO.getTournamentIdByName(tournament.getTournamentName()));
 			return "redirect:/tournamentConfirmation";
 	}
 	

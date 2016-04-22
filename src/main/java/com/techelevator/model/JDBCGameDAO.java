@@ -1,13 +1,48 @@
 package com.techelevator.model;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
 public class JDBCGameDAO implements GameDAO {
+	
+	private JdbcTemplate jdbcTemplate;
+	private CompetitorDAO competitorDAO;
+	
+	@Autowired
+	public JDBCGameDAO(DataSource dataSource, JDBCCompetitorDAO competitorDAO) {
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
+		this.competitorDAO=competitorDAO;
+	}
 
 	@Override
-	public void createGames(String[] allCompetitors) {
-		// TODO Auto-generated method stub
+	public void createGames(int maxTeams, int tournamentId) {
+		/*int gameNumber=1;
+		*/
+		for(int i=1; i<maxTeams; i++){
+		String insertGame = "INSERT INTO game(tournament_id, game_number) "+
+				"VALUES(?,?)";
+		jdbcTemplate.update(insertGame, tournamentId, i);
+		}
+		
+	}
+
+	@Override
+	public void addTeamsToGames(String[] allCompetitors, int tournamentId) {
+		
+		int gameNumber=1;
+		for(int i=0; i<allCompetitors.length-1; i=i+2){
+			int competitorOneId=competitorDAO.getCompetitorIdByName(allCompetitors[i]);
+			int competitorTwoId=competitorDAO.getCompetitorIdByName(allCompetitors[i+1]);
+			
+			String insertGame = "INSERT INTO game(competitor_1, competitor_2) VALUES(?,?) WHERE tournament_id = ? AND game_number = ?";
+			
+			jdbcTemplate.update(insertGame, competitorOneId, competitorTwoId, tournamentId, gameNumber);
+			gameNumber++;
+		}
 		
 	}
 

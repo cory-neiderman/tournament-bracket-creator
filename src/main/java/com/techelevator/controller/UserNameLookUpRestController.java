@@ -20,12 +20,12 @@ import com.techelevator.model.UserDAO;
 @SessionAttributes({"task", "user"})
 public class UserNameLookUpRestController {
 	
-	public class EditTaskController {
+	
 		
 		private UserDAO userDAO;
 		
 		@Autowired
-		public EditTaskController(JDBCUserDAO userDAO) {
+		public UserNameLookUpRestController(JDBCUserDAO userDAO) {
 			this.userDAO = userDAO;
 		}
 		
@@ -35,4 +35,4 @@ public class UserNameLookUpRestController {
 			return userDAO.searchForUsername(userName);
 		}
 	}
-}
+
