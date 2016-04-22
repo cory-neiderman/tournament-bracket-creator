@@ -19,10 +19,10 @@
       
 	
 	<table class="table-condensed" style="width:100%">
-    <c:forEach var="competitor" items="${competitorList}">
+    <c:forEach var="competitor" items="${competitorList}" varStatus="theCount">
     	
          <tr>
-           <td class="col-md-5"><div class="input-group"><div class="form-control"><c:out value="${competitor.competitorName}"/></div><span class="input-group-addon"><span class="badge pull-right">1</span></span></div></td>
+           <td class="col-md-5"><div class="input-group"><div class="form-control"><c:out value="${competitor.competitorName}"/></div><span class="input-group-addon"><span class="badge pull-right"><c:out value="${theCount.count}"/></span></span></div></td>
           
          </tr>
     		

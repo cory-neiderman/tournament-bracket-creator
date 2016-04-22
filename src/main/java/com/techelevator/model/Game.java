@@ -4,19 +4,17 @@ import java.time.LocalDate;
 
 public class Game {
 	
-	private int game;
+	private int gameId;
+	private int gameNumber;
 	private int tournamentId;
 	private int competitor1;
 	private int competitor2;
 	private int competitor1Score;
 	private int competitor2Score;
+	private int winnerCompetitorId;
 	private LocalDate date;
-	public int getGame() {
-		return game;
-	}
-	public void setGame(int game) {
-		this.game = game;
-	}
+	
+	
 	public int getTournamentId() {
 		return tournamentId;
 	}
@@ -52,5 +50,23 @@ public class Game {
 	}
 	public void setDate(LocalDate date) {
 		this.date = date;
+	}
+	public int getGameId() {
+		return gameId;
+	}
+	public void setGameId(int gameId) {
+		this.gameId = gameId;
+	}
+	public int getGameNumber() {
+		return gameNumber;
+	}
+	public void setGameNumber(int gameNumber) {
+		this.gameNumber = gameNumber;
+	}
+	public int getWinnerCompetitorId() {
+		return winnerCompetitorId;
+	}
+	public void setWinnerCompetitorId(int winnerCompetitorId) {
+		this.winnerCompetitorId = winnerCompetitorId;
 	}
 }

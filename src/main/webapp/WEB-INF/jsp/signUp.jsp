@@ -49,60 +49,78 @@
             errorClass : "error"
         });
         
-$("#userName").change(function() {
-			
-			var applicationURL = "http://localhost:8080/capstone/signUp/";
-			var userName=$("#userName").val();
-			alert(userName);
-			
-			$.ajax({
-				url : applicationURL+userName,
-				type : "GET",
-				dataType : "json"
-			}).success(function(result) {
-				searhForUserName(result);
-			}).fail(function(xhr, status, errorMessage) {
-				console.log(errorMessage);
-				console.log(status);
-				console.log(xhr);
-				console.log("FAIL");
-				
-			});
-			
-			
-			});
-		
-		function searchForUserName(event){
-		
-			alert(event);
-			
-		}
+/*$("#userName").change(function() {
+            
+            var applicationURL = "http://localhost:8080/capstone/signUp/";
+            var userName=$("#userName").val();
+            alert(userName);
+            
+            $.ajax({
+                url : applicationURL+userName,
+                type : "GET",
+                dataType : "json"
+            }).success(function(result) {
+                searhForUserName(result);
+            }).fail(function(xhr, status, errorMessage) {
+                console.log(errorMessage);
+                console.log(status);
+                console.log(xhr);
+                console.log("FAIL");
+                
+            });
+            
+            
+            });
+        
+        function searchForUserName(event){
+        
+            alert(event);
+            
+        }*/
         
     });
 </script>
-<head>
-    <title>Sign Up</title>
-</head>
-    <body>
-        <form id="signUp" action="newUserSignUp" method="POST">
-        <h1 id="header">Create Your {BRAKIT} Account Here!</h1>
-        <br/>
-            <label for="userName" id="userName">Enter your Username:</label> <input type="text"  name="userName" ><br/>
-            <br>
-            <label for="password" id="password">Enter your Password: </label> <input type="password" id="password" name="password"><br/>
-            <br>
-            <label for="confirmPassword" id="confirmPassword" >Confirm your Password: </label> <input type="password" id="confirmPassword" name="confirmPassword"><br/>
-            <br>
-            <br>
-            <select name ="role">
-              <option value="player">Player</option>
-              <option value="host">Host</option>
-            </select>
-            <input type="submit" value="Sign up"><br/>
-            <br>
-        
-        </form>
-        
+<body>
+<div class="container">
+    <div class="row vertical-offset-100">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                        <form id="signUp" action="newUserSignUp" method="POST">
+                <input type = "hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+                    <h3 id="signIn"class="panel-title">Create Your {BRAKIT} Account Here!</h3>
+                </div>
+                <div class="panel-body">
+                    <form accept-charset="UTF-8" role="form">
+                    <fieldset>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Create Username" name="userName" type="text">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Create Password" name="password" type="password" >
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Confirm Password" name="confirmPassword" type="password" >
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input name="role" type="checkbox" value="host" > Host
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input name="role" type="checkbox" value="player"> Player
+                            </label>
+                        </div>
+                        <input class="btn btn-lg btn-success btn-block" type="submit" value="Sign Up">
+                        <div style="color:red">${error}</div>
+                    </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
         <div style="color:red">${error}</div>
         
         <c:url var = "loginPage" value="/"/>
@@ -128,7 +146,5 @@ $("#userName").change(function() {
 </form>
         
         
-                
-                
-    </body>
+</body>
 </html>

@@ -18,39 +18,33 @@ body{
     background-color: #444;
     background: url(http://mymaplist.com/img/parallax/pinlayer2.png),url(http://mymaplist.com/img/parallax/pinlayer1.png),url(http://mymaplist.com/img/parallax/back.png);    
 }
-
 .vertical-offset-100{
     padding-top:100px;
 }
 #signUp{
-	color: white;
+    color: white;
 }
-
 #header{
-	color: white;
+    color: white;
 }
 form{
-	color: white;
-	display: table;
-}
-label{
-	display: table-cell;
-}
+    color: white;
+    display: table;
 input{
-	display: table-cell;
+    display: table-cell;
 }
 #submit{
-	color: black;
+    color: black;
 }
 #links{
-	color: white;
+    color: white;
 }
 a{
-	color: white;
+    color: white;
 }
 input, select, textarea{
     color: black;
 }
 #signIn {
-	color: black;
+    color: black;
 }

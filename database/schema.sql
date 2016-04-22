@@ -48,8 +48,11 @@ CREATE SEQUENCE competitor_id_seq
 CREATE TABLE competitor (
     competitor_id integer NOT NULL DEFAULT nextval('competitor_id_seq'),
     competitor_name varchar(50) UNIQUE NOT NULL,
+    competitor_seed integer,
     CONSTRAINT pk_competitor_competitor_id PRIMARY KEY (competitor_id)
     );
+    
+
     
 CREATE SEQUENCE game_id_seq
     INCREMENT BY 1
@@ -59,11 +62,13 @@ CREATE SEQUENCE game_id_seq
     
 CREATE TABLE game (
     game_id integer NOT NULL DEFAULT nextval('game_id_seq'),
+    game_number integer NOT NULL,
     tournament_id integer NOT NULL,
     comeptitor_1 integer NOT NULL,
     competitor_2 integer NOT NULL,
     competitor_1_score integer,
     competitor_2_score integer,
+    competitor_winner_id integer,
     game_date date,
     CONSTRAINT pk_game_game_id PRIMARY KEY (game_id),
     CONSTRAINT fk_tournament_id FOREIGN KEY (tournament_id) REFERENCES tournament(tournament_id)
