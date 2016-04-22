@@ -23,20 +23,22 @@ public class JDBCCompetitorDAO implements CompetitorDAO{
 	@Override
 	public void enterCompetitors(String[] competitors) {
 		for(String competitor: competitors){
-			String insertCompetitors = "INSERT INTO competitor(competitor_name) VALUES(?)";
-			jdbcTemplate.update(insertCompetitors, competitor );
+			if(!isCompetitorInDatabase(competitor)){
+				String insertCompetitors = "INSERT INTO competitor(competitor_name) VALUES(?)";
+				jdbcTemplate.update(insertCompetitors, competitor );
+			}
 		}
 		
 	}
 	
 	@Override
-	public void enterCompetitorsIntoCompetitiorTournament(String[] competitors, int tournamentId) {
+	public void enterCompetitorsIntoCompetitorTournament(String[] competitors, int tournamentId) {
 		
 		
 		for(String competitor : competitors){
 			
-			String getCompetitorIDByNAme = "SELECT competitor_id FROM competitor WHERE competitor_name = ?";
-			SqlRowSet results = jdbcTemplate.queryForRowSet(getCompetitorIDByNAme, competitor);
+			String getCompetitorIdByName = "SELECT competitor_id FROM competitor WHERE UPPER(competitor_name) = ?";
+			SqlRowSet results = jdbcTemplate.queryForRowSet(getCompetitorIdByName, competitor.toUpperCase());
 			results.next();
 			int competitorId=results.getInt("competitor_id");
 			String insertIntoTable ="INSERT INTO competitor_tournament(competitor_id, tournament_id) VALUES(?,?)";
@@ -70,6 +72,20 @@ public class JDBCCompetitorDAO implements CompetitorDAO{
 		}
 		 
 		return competitorList;
+	}
+
+	@Override
+	public boolean isCompetitorInDatabase(String competitorName) {
+		String sqlSearchForCompetitor = "SELECT * FROM competitor WHERE UPPER(competitor_name) = ?";
+
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForCompetitor, competitorName.toUpperCase());
+		if(results.next()){
+			return true;
+		}
+		else{
+			return false;
+		}
+		
 	}
 
 }

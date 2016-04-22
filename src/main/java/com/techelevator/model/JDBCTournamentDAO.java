@@ -30,7 +30,7 @@ public class JDBCTournamentDAO implements TournamentDAO {
 		
 	}
 	@Override
-	public List<Tournament> getListOfTournamentsByUserId(int userId) {
+	public List<Tournament> getListOfTournamentsThatNeedTeamsByUserId(int userId) {
 		
 		
 		List<Tournament> tournamentList = new ArrayList<Tournament>();
@@ -47,7 +47,12 @@ public class JDBCTournamentDAO implements TournamentDAO {
 			tournament.setEndDate(LocalDate.parse(results.getString("end_date")));
 			tournament.setMaxTeams(results.getInt("max_teams"));
 			tournament.setTournamentId(results.getInt("tournament_id"));
-			tournamentList.add(tournament);
+			String checkTournamentForTeams = "SELECT COUNT(tournament_id) team_count FROM competitor_tournament WHERE tournament_id = ?";
+			SqlRowSet teamResults = jdbcTemplate.queryForRowSet(checkTournamentForTeams, tournament.getTournamentId());
+			teamResults.next();
+			if(teamResults.getInt("team_count") != tournament.getMaxTeams()) {
+				tournamentList.add(tournament);
+			}
 		}
 		
 		return tournamentList;

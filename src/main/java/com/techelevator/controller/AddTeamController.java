@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.techelevator.model.CompetitorDAO;
+import com.techelevator.model.GameDAO;
 import com.techelevator.model.JDBCCompetitorDAO;
+import com.techelevator.model.JDBCGameDAO;
 import com.techelevator.model.JDBCTournamentDAO;
 import com.techelevator.model.Tournament;
 import com.techelevator.model.TournamentDAO;
@@ -26,18 +28,20 @@ public class AddTeamController {
 	
 	private TournamentDAO tournamentDAO;
 	private CompetitorDAO competitorDAO;
+	private GameDAO gameDAO;
 	
 	@Autowired
-	public AddTeamController(JDBCTournamentDAO tournamentDAO, JDBCCompetitorDAO competitorDAO) {
+	public AddTeamController(JDBCTournamentDAO tournamentDAO, JDBCCompetitorDAO competitorDAO, JDBCGameDAO gameDAO) {
 		this.tournamentDAO = tournamentDAO;
 		this.competitorDAO=competitorDAO;
+		this.gameDAO = gameDAO;
 	}
 	
 	@RequestMapping(path="/selectTournamentForAddingCompetitors", method=RequestMethod.GET)
 	public String displayListOfTournaments(Map<String, Object> model){
 		User user = (User)model.get("user");
 		List<Tournament> tournamentList = new ArrayList<>();
-		tournamentList=tournamentDAO.getListOfTournamentsByUserId(user.getUserId());
+		tournamentList=tournamentDAO.getListOfTournamentsThatNeedTeamsByUserId(user.getUserId());
 		model.put("tournamentList", tournamentList);
 		
 		return "selectTournamentForAddingCompetitors";
@@ -62,19 +66,20 @@ public class AddTeamController {
 		String[] allCompetitors = competitorName.split(",");
 		competitorDAO.enterCompetitors(allCompetitors);
 		Tournament tournament = (Tournament)model.get("tournament");
-		competitorDAO.enterCompetitorsIntoCompetitiorTournament(allCompetitors, tournament.getTournamentId());
+		competitorDAO.enterCompetitorsIntoCompetitorTournament(allCompetitors, tournament.getTournamentId());
+		gameDAO.createGames(allCompetitors);
 		model.put("allCompetitors", allCompetitors);
 		
-		return "redirect:/enterTeamsPage";
+		return "redirect:/afterEnterTeams";
 	}
 	
 
-	@RequestMapping(path="/enterTeamsPage", method=RequestMethod.GET)
+	@RequestMapping(path="/afterEnterTeams", method=RequestMethod.GET)
 	public String displayTeams(Map<String, Object> model){
 		
 		
 		
-		return "displayTeams";
+		return "homepage";
 	}
 	
 

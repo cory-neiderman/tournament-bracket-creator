@@ -30,6 +30,7 @@ body{
 form{
     color: white;
     display: table;
+}
 input{
     display: table-cell;
 }

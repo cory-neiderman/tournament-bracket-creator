@@ -12,7 +12,35 @@
 	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	    <c:url var="cssHref" value="/css/site.css" />
 		<link rel="stylesheet" type="text/css" href="${cssHref}">
-		
+		   
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+    
+        $("form").validate({
+            rules : {
+                
+                competitorName : {
+                    required : true,
+                    minlength: 3,
+                    maxlength: 20
+                }
+                
+            },
+            messages : {            
+                
+                competitorName:{
+                    minlength: "username must be at least 3 characters",
+                    maxlength: "username is too long.  Maximum length is 20 characters."
+                }
+            },
+            errorClass : "error"
+        });
+        
+
+        
+    });
+</script>      
 	
 	<body>
 		
