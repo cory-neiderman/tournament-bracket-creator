@@ -81,7 +81,7 @@ public class AddTeamController {
 		}
 		competitorDAO.enterCompetitors(allCompetitors);
 		competitorDAO.enterCompetitorsIntoCompetitorTournament(allCompetitors, tournament.getTournamentId());
-		gameDAO.createGames(allCompetitors, tournament.getTournamentId());
+		gameDAO.addTeamsToGames(allCompetitors, tournament.getTournamentId());
 		model.put("allCompetitors", allCompetitors);
 		
 		return "redirect:/afterEnterTeams";

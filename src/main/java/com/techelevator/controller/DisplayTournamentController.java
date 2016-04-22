@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.techelevator.model.Competitor;
 import com.techelevator.model.CompetitorDAO;
+import com.techelevator.model.Game;
+import com.techelevator.model.GameDAO;
 import com.techelevator.model.JDBCCompetitorDAO;
+import com.techelevator.model.JDBCGameDAO;
 import com.techelevator.model.JDBCTournamentDAO;
 import com.techelevator.model.Tournament;
 import com.techelevator.model.TournamentDAO;
@@ -27,11 +30,13 @@ public class DisplayTournamentController {
 	
 	private TournamentDAO tournamentDAO;
 	private CompetitorDAO competitorDAO;
+	private GameDAO gameDAO;
 	
 	@Autowired
-	public DisplayTournamentController(JDBCTournamentDAO tournamentDAO, JDBCCompetitorDAO competitorDAO) {
+	public DisplayTournamentController(JDBCTournamentDAO tournamentDAO, JDBCCompetitorDAO competitorDAO, JDBCGameDAO gameDAO) {
 		this.tournamentDAO = tournamentDAO;
 		this.competitorDAO=competitorDAO;
+		this.gameDAO=gameDAO;
 	}
 	
 	@RequestMapping(path="/displayAllTournaments", method=RequestMethod.GET)
@@ -49,9 +54,9 @@ public class DisplayTournamentController {
 		Tournament tournament = tournamentDAO.getTournamentById(tournamentId);
 		model.put("tournament", tournament);
 		
-		List<Competitor> competitorList = new ArrayList<>();
-		competitorList = competitorDAO.getCompetitorListByTournamentId(tournamentId);
-		model.put("competitorList", competitorList);
+		List<Game> gameList = new ArrayList<>();
+		gameList = gameDAO.getGameListByTournamentId(tournamentId);
+		model.put("gameList", gameList);
 		
 		return "displayTournamentBracket";
 	}

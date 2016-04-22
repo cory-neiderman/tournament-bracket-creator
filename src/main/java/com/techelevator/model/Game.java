@@ -8,6 +8,8 @@ public class Game {
 	private int gameNumber;
 	private int tournamentId;
 	private int competitor1;
+	private String competitor1Name;
+	private String competitor2Name;
 	private int competitor2;
 	private int competitor1Score;
 	private int competitor2Score;
@@ -68,5 +70,17 @@ public class Game {
 	}
 	public void setWinnerCompetitorId(int winnerCompetitorId) {
 		this.winnerCompetitorId = winnerCompetitorId;
+	}
+	public String getCompetitor1Name() {
+		return competitor1Name;
+	}
+	public void setCompetitor1Name(String competitor1Name) {
+		this.competitor1Name = competitor1Name;
+	}
+	public String getCompetitor2Name() {
+		return competitor2Name;
+	}
+	public void setCompetitor2Name(String competitor2Name) {
+		this.competitor2Name = competitor2Name;
 	}
 }
