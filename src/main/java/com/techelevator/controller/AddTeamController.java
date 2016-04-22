@@ -25,7 +25,7 @@ import com.techelevator.model.User;
 
 @Controller
 @Transactional
-@SessionAttributes({"tournament", "user", "allCompetitors"})
+@SessionAttributes({"tournament", "user", "allCompetitors", "teamError", "tournamentId", "maxTeams"})
 public class AddTeamController {
 	
 	private TournamentDAO tournamentDAO;
@@ -55,6 +55,7 @@ public class AddTeamController {
 		Tournament tournament = new Tournament();
 		tournament.setTournamentId(tournamentId);
 		model.put("tournament", tournament);
+		model.put("tournamentId", tournamentId);
 		int maxTeams = tournamentDAO.getMaxTeamsByTournamentId(tournamentId);
 		model.put("maxTeams", maxTeams);
 		
@@ -71,9 +72,14 @@ public class AddTeamController {
 	public String enterTeams(Map<String, Object> model,
 								@RequestParam(name="competitorName") String competitorName){
 		
+		Tournament tournament = (Tournament) model.get("tournament");
 		String[] allCompetitors = competitorName.split(",");
+		
+		if(allCompetitors.length != (int)model.get("maxTeams")){
+			model.put("teamError", "Wrong amount of teams entered");
+			return "redirect:/addCompetitorsToTournament";
+		}
 		competitorDAO.enterCompetitors(allCompetitors);
-		Tournament tournament = (Tournament)model.get("tournament");
 		competitorDAO.enterCompetitorsIntoCompetitorTournament(allCompetitors, tournament.getTournamentId());
 		gameDAO.createGames(allCompetitors);
 		model.put("allCompetitors", allCompetitors);

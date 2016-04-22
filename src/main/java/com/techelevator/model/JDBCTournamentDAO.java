@@ -48,10 +48,11 @@ public class JDBCTournamentDAO implements TournamentDAO {
 			tournament.setMaxTeams(results.getInt("max_teams"));
 			tournament.setTournamentId(results.getInt("tournament_id"));
 			String checkTournamentForTeams = "SELECT COUNT(tournament_id) team_count FROM competitor_tournament WHERE tournament_id = ?";
-			SqlRowSet teamResults = jdbcTemplate.queryForRowSet(checkTournamentForTeams, tournament.getTournamentId());
 			
+			SqlRowSet teamResults = jdbcTemplate.queryForRowSet(checkTournamentForTeams, tournament.getTournamentId());
 			teamResults.next();
 			int numberOfTeams = teamResults.getInt("team_count");
+			
 			if(numberOfTeams != tournament.getMaxTeams()) {
 				tournamentList.add(tournament);
 			}
@@ -85,9 +86,6 @@ public class JDBCTournamentDAO implements TournamentDAO {
 			tournament.setTournamentId(results.getInt("tournament_id"));
 			tournamentList.add(tournament);
 		}
-		
-		
-		
 		
 		return tournamentList;
 	}

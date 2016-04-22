@@ -45,8 +45,14 @@
 	<body>
 		
 		<h1>Add Competitors To Tournament</h1>
-		<form action="addTeams" method="POST" id="enterTeamsForm">
-		<c:set value="${ }">
+		<div style="color:red">${teamError}</div>
+		
+		<c:url value="/addTeams" var="addTeams">
+			<c:param name="tournamentId" value="${tournament.tournamentId}"/>
+		</c:url>
+		
+		<form action="${addTeams}" method="POST" id="enterTeamsForm">
+		
     	<c:forEach var="counter" begin="1" end="${maxTeams}">
     		Competitor <c:out value="${counter}"/> Name: <input type="text"  name="competitorName"><br>
     	</c:forEach>
