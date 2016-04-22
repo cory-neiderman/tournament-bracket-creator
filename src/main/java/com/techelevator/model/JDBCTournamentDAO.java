@@ -49,8 +49,10 @@ public class JDBCTournamentDAO implements TournamentDAO {
 			tournament.setTournamentId(results.getInt("tournament_id"));
 			String checkTournamentForTeams = "SELECT COUNT(tournament_id) team_count FROM competitor_tournament WHERE tournament_id = ?";
 			SqlRowSet teamResults = jdbcTemplate.queryForRowSet(checkTournamentForTeams, tournament.getTournamentId());
+			
 			teamResults.next();
-			if(teamResults.getInt("team_count") != tournament.getMaxTeams()) {
+			int numberOfTeams = teamResults.getInt("team_count");
+			if(numberOfTeams != tournament.getMaxTeams()) {
 				tournamentList.add(tournament);
 			}
 		}

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,7 +58,13 @@ public class AddTeamController {
 		int maxTeams = tournamentDAO.getMaxTeamsByTournamentId(tournamentId);
 		model.put("maxTeams", maxTeams);
 		
-		return "addCompetitorsToTournament";
+		User user = (User)model.get("user");
+		if (user.getUserRole().equals("host")) {
+			return "addCompetitorsToTournament";
+		} else {
+			return "homepage";
+		}
+		
 	}
 	
 	@RequestMapping(path="/addTeams", method=RequestMethod.POST)

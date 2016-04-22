@@ -17,7 +17,7 @@
     $(document).ready(function () {
         
     
-        $("form").validate({
+        $("#enterTeamsForm").validate({
             rules : {
                 
                 competitorName : {
@@ -30,8 +30,8 @@
             messages : {            
                 
                 competitorName:{
-                    minlength: "username must be at least 3 characters",
-                    maxlength: "username is too long.  Maximum length is 20 characters."
+                    minlength: "competitor name must be at least 3 characters",
+                    maxlength: "competitor name is too long.  Maximum length is 20 characters."
                 }
             },
             errorClass : "error"
@@ -45,9 +45,10 @@
 	<body>
 		
 		<h1>Add Competitors To Tournament</h1>
-		<form action="addTeams" method="POST">
+		<form action="addTeams" method="POST" id="enterTeamsForm">
+		<c:set value="${ }">
     	<c:forEach var="counter" begin="1" end="${maxTeams}">
-    		Competitor <c:out value="${counter}"/> Name: <input type="text" name="competitorName"><br>
+    		Competitor <c:out value="${counter}"/> Name: <input type="text"  name="competitorName"><br>
     	</c:forEach>
     		<input type="submit" value="Submit">
     	</form>
