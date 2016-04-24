@@ -51,23 +51,38 @@ public class JDBCGameDAO implements GameDAO {
 		
 	}
 
-	/*@Override
+	@Override
 	public List<Game> getGameListByTournamentId(int tournamentId) {
 		
-		
-		String getListOfGames = "SELECT * FROM game WHERE tournament_id = ?"; 
-				
-
-		SqlRowSet results = jdbcTemplate.queryForRowSet(getListOfGames, tournamentId);
 		List<Game> gameList = new ArrayList<>();
+		
+		String sqlQueryForCompetitor1Name = "SELECT game.game_number, game.tournament_id, game.competitor_1, game.competitor_2, competitor.competitor_name "
+				+ "FROM game "
+				+ "INNER JOIN competitor "
+				+ "ON game.competitor_1=competitor.competitor_id "
+				+ "WHERE game.tournament_id = ?";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlQueryForCompetitor1Name, tournamentId);
+		
 		while (results.next()) {
 			Game game = new Game();
 			game.setGameNumber(results.getInt("game_number"));
-			//game.setCompetitor1Name(competitorDAO.getNameById(results.getInt("competitor_1")));
-			//game.setCompetitor2Name(competitorDAO.getNameById(results.getInt("competitor_2")));
+			game.setTournamentId(tournamentId);
+			game.setCompetitor1Name(results.getString("competitor_name"));
+			String sqlQueryForCompetitor2Name = "SELECT game.competitor_2, competitor.competitor_name "
+					+ "FROM competitor "
+					+ "INNER JOIN game "
+					+ "ON game.competitor_2=competitor.competitor_id "
+					+ "WHERE competitor_2=?";
+			
+			SqlRowSet nextResults = jdbcTemplate.queryForRowSet(sqlQueryForCompetitor2Name, results.getInt("competitor_2"));
+			nextResults.next();
+			game.setCompetitor2Name(nextResults.getString("competitor_name"));
+			gameList.add(game);
+			
 		}
 		
 		return gameList;
-	}*/
+	}
 
 }
