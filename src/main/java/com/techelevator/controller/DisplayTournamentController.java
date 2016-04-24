@@ -55,7 +55,7 @@ public class DisplayTournamentController {
 		model.put("tournament", tournament);
 		
 		List<Game> gameList = new ArrayList<>();
-		gameList = gameDAO.getGameListByTournamentId(tournamentId);
+		//gameList = gameDAO.getGameListByTournamentId(tournamentId);
 		model.put("gameList", gameList);
 		
 		return "displayTournamentBracket";

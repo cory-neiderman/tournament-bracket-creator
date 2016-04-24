@@ -97,4 +97,13 @@ public class JDBCCompetitorDAO implements CompetitorDAO{
 		return results.getInt("competitor_id");
 	}
 
+	@Override
+	public String getNameById(int int1) {
+		String sqlSearchForCompetitor = "SELECT * FROM competitor WHERE competitor_id = ?";
+
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForCompetitor, int1);
+		results.next();
+		return results.getString("competitor_name");
+	}
+
 }

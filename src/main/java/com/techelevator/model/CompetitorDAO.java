@@ -9,5 +9,6 @@ public interface CompetitorDAO {
 	public boolean isCompetitorInDatabase(String competitorName);
 	public int getCompetitorIdByName(String competitorName);
 	public List<Competitor> getCompetitorListByTournamentId(int tournamentId);
+	public String getNameById(int int1);
 
 }

@@ -15,13 +15,13 @@ public class JDBCGameDAO implements GameDAO {
 	
 	private JdbcTemplate jdbcTemplate;
 	private CompetitorDAO competitorDAO;
-	private GameDAO gameDAO;
+	
 	
 	@Autowired
-	public JDBCGameDAO(DataSource dataSource, JDBCCompetitorDAO competitorDAO, JDBCGameDAO gameDAO) {
+	public JDBCGameDAO(DataSource dataSource, JDBCCompetitorDAO competitorDAO) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 		this.competitorDAO=competitorDAO;
-		this.gameDAO = gameDAO;
+		
 	}
 
 	@Override
@@ -46,12 +46,12 @@ public class JDBCGameDAO implements GameDAO {
 			String insertGame = "UPDATE game SET competitor_1 = ?, competitor_2 = ? WHERE tournament_id = ? AND game_number = ?";
 			
 			jdbcTemplate.update(insertGame, competitorOneId, competitorTwoId, tournamentId, gameNumber);
-			gameNumber++;
+			gameNumber= gameNumber+1;
 		}
 		
 	}
 
-	@Override
+	/*@Override
 	public List<Game> getGameListByTournamentId(int tournamentId) {
 		
 		
@@ -63,11 +63,11 @@ public class JDBCGameDAO implements GameDAO {
 		while (results.next()) {
 			Game game = new Game();
 			game.setGameNumber(results.getInt("game_number"));
-			game.setCompetitor1Name(competitorDAO.getNameById(results.getInt("competitor_1")));
-			game.setCompetitor2Name(competitorDAO.getNameById(results.getInt("competitor_2")));
+			//game.setCompetitor1Name(competitorDAO.getNameById(results.getInt("competitor_1")));
+			//game.setCompetitor2Name(competitorDAO.getNameById(results.getInt("competitor_2")));
 		}
 		
 		return gameList;
-	}
+	}*/
 
 }
