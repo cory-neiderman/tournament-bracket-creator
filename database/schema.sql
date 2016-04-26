@@ -64,6 +64,7 @@ CREATE TABLE game (
     game_id integer NOT NULL DEFAULT nextval('game_id_seq'),
     game_number integer NOT NULL,
     tournament_id integer NOT NULL,
+    round_number integer NOT NULL,
     competitor_1 integer,
     competitor_2 integer,
     competitor_1_score integer,
