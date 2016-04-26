@@ -21,8 +21,10 @@
 	<table class="table-condensed" style="width:100%">
 	
 	
-    <c:forEach var="game" items="${gameList}" varStatus="theCount">
+    <c:forEach var="round" items="${roundList}" varStatus="theCount">
     	
+    	
+    	<c:forEach var="game" items = "${round.gamesInRound}">
          <tr>
            <td class="col-md-5"><div class="input-group"><div class="form-control"><c:out value="${game.competitor1Name}"/></div><span class="input-group-addon"><span class="badge pull-right"><c:out value="${game.gameNumber}"/></span></span></div></td>
           
@@ -31,7 +33,7 @@
            <td class="col-md-5"><div class="input-group"><div class="form-control"><c:out value="${game.competitor2Name}"/></div><span class="input-group-addon"><span class="badge pull-right"><c:out value="${game.gameNumber}"/></span></span></div></td>
           
          </tr>
-    		
+    		</c:forEach>
     	
     	</c:forEach>
     </table>

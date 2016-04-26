@@ -26,11 +26,40 @@ public class JDBCGameDAO implements GameDAO {
 
 	@Override
 	public void createGames(int maxTeams, int tournamentId) {
-		
+		int roundCount=0;
+		int n = maxTeams;
+		while(n>1){
+			n=n/2;
+			roundCount=roundCount+1;
+		}
+		int currentRound=1;
 		for(int i=1; i<maxTeams; i++){
-		String insertGame = "INSERT INTO game(tournament_id, game_number) "+
-				"VALUES(?,?)";
-		jdbcTemplate.update(insertGame, tournamentId, i);
+			
+			if(i==maxTeams-1){
+				currentRound=roundCount;
+			}
+			else if(i>=maxTeams-3 && i<=maxTeams-2){
+				currentRound=roundCount-1;
+			}
+			else if(i>=maxTeams-7 && i<=maxTeams-4){
+				currentRound=roundCount-2;
+			}
+			else if(i>=maxTeams-15 && i<=maxTeams-8){
+				currentRound=roundCount-3;
+			}
+			else if(i>=maxTeams-31 && i<=maxTeams-16){
+				currentRound=roundCount-4;
+			}
+			else if(i>=maxTeams-63 && i<=maxTeams-32){
+				currentRound=roundCount-5;
+			}
+			
+			String insertGame = "INSERT INTO game(tournament_id, game_number, round_number) "+
+				"VALUES(?,?,?)";
+			
+		jdbcTemplate.update(insertGame, tournamentId, i, currentRound);
+		
+		
 		}
 		
 	}
@@ -52,13 +81,13 @@ public class JDBCGameDAO implements GameDAO {
 	}
 
 	@Override
-	public List<Game> getGameListByTournamentId(int tournamentId) {
+	public List<Game> getGameListByRoundAndTournamentId(int tournamentId, int round) {
 		
 		List<Game> gameList = new ArrayList<>();
 		
-		String sqlQueryForGames = "SELECT * FROM game WHERE tournament_id = ?";
+		String sqlQueryForGames = "SELECT * FROM game WHERE tournament_id = ? AND round_number = ?";
 		
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlQueryForGames, tournamentId);
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlQueryForGames, tournamentId, round);
 		
 		while (results.next()) {
 			Game game = new Game();
@@ -95,5 +124,7 @@ public class JDBCGameDAO implements GameDAO {
 		
 		return gameList;
 	}
+
+	
 
 }

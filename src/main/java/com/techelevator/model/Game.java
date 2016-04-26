@@ -84,4 +84,10 @@ public class Game {
 	public void setCompetitor2Name(String competitor2Name) {
 		this.competitor2Name = competitor2Name;
 	}
+	public int getRoundNumber() {
+		return roundNumber;
+	}
+	public void setRoundNumber(int roundNumber) {
+		this.roundNumber = roundNumber;
+	}
 }

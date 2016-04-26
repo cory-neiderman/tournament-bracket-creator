@@ -26,7 +26,7 @@ import com.techelevator.model.User;
 
 @Controller
 @Transactional
-@SessionAttributes("tournamentList")
+@SessionAttributes({"tournamentList", "roundList"})
 public class DisplayTournamentController {
 	
 	private TournamentDAO tournamentDAO;
@@ -65,7 +65,7 @@ public class DisplayTournamentController {
 		}
 		
 		
-		model.put("gameList", gameList);
+		model.put("roundList", roundList);
 		
 		return "displayTournamentBracket";
 	}
