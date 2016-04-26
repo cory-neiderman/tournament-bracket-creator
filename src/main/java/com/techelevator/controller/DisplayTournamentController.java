@@ -19,6 +19,7 @@ import com.techelevator.model.GameDAO;
 import com.techelevator.model.JDBCCompetitorDAO;
 import com.techelevator.model.JDBCGameDAO;
 import com.techelevator.model.JDBCTournamentDAO;
+import com.techelevator.model.Round;
 import com.techelevator.model.Tournament;
 import com.techelevator.model.TournamentDAO;
 import com.techelevator.model.User;
@@ -54,8 +55,16 @@ public class DisplayTournamentController {
 		Tournament tournament = tournamentDAO.getTournamentById(tournamentId);
 		model.put("tournament", tournament);
 		
-		List<Game> gameList = new ArrayList<>();
-		gameList = gameDAO.getGameListByTournamentId(tournamentId);
+		List<Round> roundList = new ArrayList<>();
+		
+		for(int i=1; i<=tournament.getNumberOfRounds(); i++){
+			Round round = new Round();
+			List<Game> gameList = gameDAO.getGameListByRoundAndTournamentId(tournamentId, i);
+			round.setGamesInRound(gameList);
+			roundList.add(round);
+		}
+		
+		
 		model.put("gameList", gameList);
 		
 		return "displayTournamentBracket";
