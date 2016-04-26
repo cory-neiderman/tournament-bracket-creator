@@ -41,15 +41,18 @@ public class SignUpController {
 								@RequestParam(name="password") String password,
 								@RequestParam(name="role") String role){
 		
-		if(!userDAO.searchForUsername(userName)){
+		if(!userDAO.searchForUsername(userName) && password.length()>7){
 			userDAO.saveUser(userName, password, role);
 			return "redirect:/";
 			
 		}
-		else{
-			//model.put("signUpError", "Username is already taken");
+		else if(userDAO.searchForUsername(userName)){
+			model.put("signUpError", "Username is already taken");
 			return "redirect:/signUp";
 		}
+		else
+			model.put("signUpError", "Password not long enough");
+		return "redirect:/signUp";
 		
 		
 	}

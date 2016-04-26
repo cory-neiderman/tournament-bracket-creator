@@ -1,7 +1,9 @@
 package com.techelevator.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,9 +32,17 @@ public class UserNameLookUpRestController {
 		}
 		
 		@RequestMapping(path="/signUp/{userName}", method=RequestMethod.GET)
-		public boolean searchForUsername(@PathVariable String userName){
+		public List<String> searchForUsername(@PathVariable String userName){
 			
-			return userDAO.searchForUsername(userName);
+			List<String> result = new ArrayList<>();
+			if(userDAO.searchForUsername(userName)){
+				result.add("Userame is taken");
+				return result;
+			}
+			else{
+				result.add("Username is available");
+				return result;
+			}
 		}
 	}
 

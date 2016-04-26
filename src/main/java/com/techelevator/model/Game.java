@@ -15,6 +15,7 @@ public class Game {
 	private int competitor2Score;
 	private int winnerCompetitorId;
 	private LocalDate date;
+	private int roundNumber;
 	
 	
 	public int getTournamentId() {

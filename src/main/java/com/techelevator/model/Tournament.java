@@ -13,6 +13,17 @@ public class Tournament {
 	private int minTeams;
 	private int maxTeams;
 	private String sport;
+	private int getNumberOfRounds;
+	
+	public int getNumberOfRounds(){
+		int count=0;
+		int n = maxTeams;
+		while(n>1){
+			n=n/2;
+			count=count+1;
+		}
+		return count;
+	}
 	
 	public int getTournamentId() {
 		return tournamentId;
