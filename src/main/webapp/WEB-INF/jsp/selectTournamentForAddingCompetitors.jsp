@@ -17,17 +17,27 @@
 
 	<title>Add Competitors To Tournament</title>
 </head>
-	<body>
-		<h1>Select a Tournament to Add Competitors To</h1>
+	<body >
+	<br/>
+	<div id="tournamentList">
+		<h1 id="selectTournament">{ Select a Tournament }</h1>
+		<br/>
+		<br/>
+		<br/>
     <ul>
     <c:forEach var="tournament" items="${tournamentList}">
     	<li id="links">
     	<c:url value="/addCompetitorsToTournament" var="addTeams">
-			<c:param name="tournamentId" value="${tournament.tournamentId}"/>
+			<c:param name="tournamentId" value="${tournament.tournamentId}" />
 		</c:url>
-    		<a href="${addTeams}"><c:out value="${tournament.tournamentName}"/></a>
+    		<a id="links" href="${addTeams}">{ <c:out value="${tournament.tournamentName}"/> }</a>
     	
     	</c:forEach>
     </ul>
+    <br/>
+    <br/>
+    <br/>
+    </div>
+    <br/>
 	</body>
 </html>

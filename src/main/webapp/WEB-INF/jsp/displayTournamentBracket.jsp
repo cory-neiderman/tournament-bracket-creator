@@ -13,7 +13,8 @@
 	    <c:url var="cssHref" value="/css/site.css" />
 		<link rel="stylesheet" type="text/css" href="${cssHref}">
 		
-	 
+	 <br/>
+	 <br/>
 	<div class="bracketBack">
 	<main id="tournament">
     <c:forEach var="round" items="${roundList}" varStatus="count">
@@ -24,9 +25,9 @@
 		<c:forEach var="game" items = "${round.gamesInRound}" >
 		
 			<li class="spacer">&nbsp;</li>
-			<li class="game game-top winner"><c:out value="${game.competitor1Name}"/> <span><c:out value="${game.gameNumber}"/></span></li>
+			<li class="game game-top winner">{ <c:out value="${game.competitor1Name}"/> }<span><c:out value="${game.gameNumber}"/></span></li>
 			<li class="game game-spacer">&nbsp;</li>
-			<li class="game game-bottom "><c:out value="${game.competitor2Name}"/><span><c:out value="${game.gameNumber}"/></span></li>
+			<li class="game game-bottom ">{ <c:out value="${game.competitor2Name}"/> }<span><c:out value="${game.gameNumber}"/></span></li>
 
 			<li class="spacer">&nbsp;</li>
     	
@@ -36,6 +37,8 @@
     	</ul>
     	</c:forEach>
     	</main>
+    	<br/>
+    	<br/>
     
  
 </div>

@@ -13,12 +13,14 @@
 	    <c:url var="cssHref" value="/css/site.css" />
 		<link rel="stylesheet" type="text/css" href="${cssHref}">
 		
-		
+	<br/>	
 	<html>
 </head>
 	<body>
 	<div class="tournamentDetails">
-		<h1 id="verify">Verify Tournament</h1><br/>
+	<br/>
+	<br/>
+		<h1 id="verify">{ Verify Tournament }</h1><br/>
 		<ul id="tournamentDetails">
 			<li id="tournamentDetails"><strong>Tournament Name: </strong><c:out value="${tournament.tournamentName}" />
 			<li id="tournamentDetails"><strong>Sport: </strong><c:out value="${tournament.sport}" />
@@ -27,13 +29,19 @@
 			<li id="tournamentDetails"><strong>End Date: </strong><c:out value="${tournament.endDateAsString}" />
 		</ul>
 		<br/>
+		<br/>
 		
 	<form id="confirmTournament" action="confirmTournament" method="POST" >
 	<input class="btn btn-block btn-lg btn-warning" type="submit" value="{ Confirm Tournament }">
 	
 				<br/>
+				<br/>
+				<br/>
+				<br/>
 				</form>
 				</div>
+				
 	
 </body>
+<br/>
 </html>

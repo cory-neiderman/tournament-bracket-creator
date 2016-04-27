@@ -24,7 +24,7 @@
 			  	<div class="panel-heading">
 			  	<form id="newTournament" action="newTournament" method="GET">
 			  	<input type = "hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-			    	<h3 id="createYourTournament"class="panel-title">Create Your Tournament!</h3>
+			    	<h3 id="createYourTournament"class="panel-title">{ Create Your Tournament }</h3>
 			 	</div>
 			  	<div class="panel-body">
 			    	<form accept-charset="UTF-8" role="form">
@@ -44,7 +44,7 @@
 			    		<div class="form-group">
 			    			<input class="form-control" placeholder="End Date" name="endDate" type="text" >
 			    		</div>
-			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Submit Tournament" id="submit">
+			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="{ Submit Tournament }" id="submit">
 			    		<div style="color:red">${error}</div>
 			    	</fieldset>
 			      	</form>
@@ -53,5 +53,10 @@
 		</div>
 	</div>
 </div>
+<br/>
+<br/>
+<br/>
+
+
 </body>
 </html>

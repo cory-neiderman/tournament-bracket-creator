@@ -113,7 +113,7 @@ $("#userName").change(function() {
                                 <input name="role" type="checkbox" value="player"> Player
                             </label>
                         </div>
-                        <input class="btn btn-lg btn-success btn-block" type="submit" value="Sign Up">
+                        <input class="btn btn-lg btn-success btn-block" type="submit" value="{ Sign Up }">
                         <div style="color:red">${error}</div>
                     </fieldset>
                     </form>
@@ -128,6 +128,8 @@ $("#userName").change(function() {
             <a href="${loginPage}">Login here if already a user</a>
         </p>
                 <div class="col-sm-6">
+                <br/>
+                <br/>
             <strong>Password Rules:</strong>
             <ul>
                 <li>Must be at least 8 characters long</li>

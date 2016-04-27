@@ -53,7 +53,7 @@
 					</c:url>
 			  	<form action="${addTeams}" method="POST" id="enterTeamsForm">
 			  	<input type = "hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-			    	<h3 id="addCompetitiors"class="panel-title">Add Competitors</h3>
+			    	<h3 id="addCompetitiors"class="panel-title">{ Add Competitors }</h3>
 			 	</div>
 			  	<div class="panel-body">
 			    	<form accept-charset="UTF-8" role="form">
@@ -64,7 +64,7 @@
 			    		    <input class="form-control" placeholder="Competitor Name" name="competitorName" type="text">
 			    		</div>
 			    	</c:forEach>
-			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Submit" id="submit">
+			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="{ Submit }" id="submit">
 			    		<div style="color:red">${teamError}</div>
 			    	</fieldset>
 			      	</form>
