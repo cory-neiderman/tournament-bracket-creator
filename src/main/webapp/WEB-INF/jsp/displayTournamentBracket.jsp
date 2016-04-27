@@ -44,6 +44,10 @@
     
  
 </div>
+<br/>
+   <p align="center"  id="disclaimer">EARLY ACCESS DISCLAIMER</p>
+	        <br/>
+			<p align="center"  id="disclaimerText">The service is currently for testing purposes. Functionality and features may drastically change, and created content may not be available later. Your feedback is much appreciated!</p><br/>
  
  
  

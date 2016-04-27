@@ -1,5 +1,4 @@
 
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 		
 		
@@ -14,9 +13,8 @@
 	    <script src="http://mymaplist.com/js/vendor/TweenLite.min.js"></script>
 	    
 	    <c:url var="cssHref" value="/css/site.css" />
-	    <script src="http://mymaplist.com/js/vendor/TweenLite.min.js"></script>
-	    
 		<link rel="stylesheet" type="text/css" href="${cssHref}">
+	    
 		
 	<script type="text/javascript">	
 		$(document).ready(function(){
@@ -31,8 +29,17 @@
   });
 });
 </script>
-
-<body id="body1">
+		
+<br/>		
+<br/>
+<br/><p align="center"  id="followAnd">FOLLOW AND HOST TOURNAMENTS</p><br/>
+<br/>
+	 <p  align="center" id="live">Live in minutes: set up new tournament, share to spectators and organizers, and publish results as they come.</p>
+	<br/>
+	<div>
+	
+	<br/>
+		<a href="signUp" class="btn btn-block btn-lg btn-danger">{ Create an Account }</a><br/>
 <div class="container">
     <div class="row vertical-offset-100">
         <div class="col-md-4 col-md-offset-4">
@@ -66,7 +73,18 @@
 		</div>
 	</div>
 </div>
+		
+	<br/>	
+	</div>
+	
+	
+	        <p align="center"  id="disclaimer">EARLY ACCESS DISCLAIMER</p>
+	        <br/>
+			<p align="center"  id="disclaimerText">The service is currently for testing purposes. Functionality and features may drastically change, and created content may not be available later. Your feedback is much appreciated!</p><br/>
 <br/>
 <br/>
-</body>
+<br/>
+
+
+	</body>
 </html>
