@@ -184,6 +184,8 @@ public class JDBCGameDAO implements GameDAO {
 		Game game = new Game();
 		game.setGameNumber(results.getInt("game_number"));
 		game.setGameId(gameId);
+		game.setRoundNumber(results.getInt("round_number"));
+		game.setWinnerCompetitorId(results.getInt("competitor_winner_id"));
 		
 		if(results.getString("competitor_1") == null){
 			game.setCompetitor1Name("winner of previous");
@@ -220,6 +222,20 @@ public class JDBCGameDAO implements GameDAO {
 		String sqlUpdateQuery = "UPDATE game SET competitor_1_score = ?, competitor_2_score = ?, competitor_winner_id = ? WHERE game_id = ?";
 		
 		jdbcTemplate.update(sqlUpdateQuery, competitor1Score, competitor2Score, winnerId, gameId);
+		
+	}
+
+	@Override
+	public void advanceWinner(int winnerId, int gameNumber, int teams) {
+		
+		int nextGameNumber=teams/2;
+		if(round==1){
+		if(gameNumber==1 || gameNumber == 2){
+			nextGameNumber=nextGameNumber+1;
+		} else if (gameNumber==3 || gameNumber==4) {
+			nextGameNumber=nextGameNumber+2;
+		}
+		
 		
 	}
 

@@ -87,9 +87,14 @@ public class TrackResultsController {
 		
 		Game game = (Game)model.get("game");
 		
-		
-		
 		gameDAO.recordScore(winnerId, competitor1Score, competitor2Score, game.getGameId());
+		
+		Tournament tournament = (Tournament)model.get("tournament");
+		int teams = tournamentDAO.getMaxTeamsByTournamentId(tournament.getTournamentId());
+		
+		Game gameRecorded = gameDAO.getGameByGameId(game.getGameId());
+		gameDAO.advanceWinner(gameRecorded);
+		
 		
 		return "redirect: afterGameRecorded";
 	}
