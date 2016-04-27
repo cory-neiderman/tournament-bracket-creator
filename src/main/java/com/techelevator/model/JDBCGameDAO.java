@@ -125,6 +125,89 @@ public class JDBCGameDAO implements GameDAO {
 		return gameList;
 	}
 
+	@Override
+	public List<Game> getGameListByTournamentId(int tournamentId) {
+		List<Game> gameList = new ArrayList<>();
+		
+		String sqlQueryForGames = "SELECT * FROM game WHERE tournament_id = ?";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlQueryForGames, tournamentId);
+		
+		while (results.next()) {
+			Game game = new Game();
+			game.setGameNumber(results.getInt("game_number"));
+			game.setTournamentId(tournamentId);
+			game.setGameId(results.getInt("game_id"));
+			if(results.getString("competitor_1") == null){
+				game.setCompetitor1Name("winner of previous");
+				game.setCompetitor2Name("winner of previous");
+			}
+			else{
+				String sqlQueryForCompetitor1Name = "SELECT game.competitor_1, competitor.competitor_name "
+						+ "FROM competitor "
+						+ "INNER JOIN game "
+						+ "ON game.competitor_1=competitor.competitor_id "
+						+ "WHERE competitor_1=?";
+				
+				SqlRowSet competitor1Results = jdbcTemplate.queryForRowSet(sqlQueryForCompetitor1Name, results.getInt("competitor_1"));
+				competitor1Results.next();
+				game.setCompetitor1Name(competitor1Results.getString("competitor_name"));
+				
+				String sqlQueryForCompetitor2Name = "SELECT game.competitor_2, competitor.competitor_name "
+						+ "FROM competitor "
+						+ "INNER JOIN game "
+						+ "ON game.competitor_2=competitor.competitor_id "
+						+ "WHERE competitor_2=?";
+				
+				SqlRowSet competitor2Results = jdbcTemplate.queryForRowSet(sqlQueryForCompetitor2Name, results.getInt("competitor_2"));
+				competitor2Results.next();
+				game.setCompetitor2Name(competitor2Results.getString("competitor_name"));
+			}
+			gameList.add(game);
+			
+		}
+		
+		return gameList;
+	}
+
+	@Override
+	public Game getGameByGameId(int gameId) {
+		
+		String sqlQueryForGames = "SELECT * FROM game WHERE game_id = ?";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlQueryForGames, gameId);
+		
+		results.next();
+		Game game = new Game();
+		game.setGameNumber(results.getInt("game_number"));
+		if(results.getString("competitor_1") == null){
+			game.setCompetitor1Name("winner of previous");
+			game.setCompetitor2Name("winner of previous");
+		}
+		else{
+			String sqlQueryForCompetitor1Name = "SELECT game.competitor_1, competitor.competitor_name "
+					+ "FROM competitor "
+					+ "INNER JOIN game "
+					+ "ON game.competitor_1=competitor.competitor_id "
+					+ "WHERE competitor_1=?";
+			
+			SqlRowSet competitor1Results = jdbcTemplate.queryForRowSet(sqlQueryForCompetitor1Name, results.getInt("competitor_1"));
+			competitor1Results.next();
+			game.setCompetitor1Name(competitor1Results.getString("competitor_name"));
+			
+			String sqlQueryForCompetitor2Name = "SELECT game.competitor_2, competitor.competitor_name "
+					+ "FROM competitor "
+					+ "INNER JOIN game "
+					+ "ON game.competitor_2=competitor.competitor_id "
+					+ "WHERE competitor_2=?";
+			
+			SqlRowSet competitor2Results = jdbcTemplate.queryForRowSet(sqlQueryForCompetitor2Name, results.getInt("competitor_2"));
+			competitor2Results.next();
+			game.setCompetitor2Name(competitor2Results.getString("competitor_name"));
+		}
+		return game;
+	}
+
 	
 
 }

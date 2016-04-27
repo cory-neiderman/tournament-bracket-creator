@@ -9,5 +9,7 @@ public interface GameDAO {
 	void createGames(int maxTeams, int tournamentId);
 	void addTeamsToGames(String[] allCompetitors, int tournamentId);
 	List<Game> getGameListByRoundAndTournamentId(int tournamentId, int i);
+	List<Game> getGameListByTournamentId(int tournamentId);
+	Game getGameByGameId(int gameId);
 
 }

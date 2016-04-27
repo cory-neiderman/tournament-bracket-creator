@@ -59,7 +59,7 @@
                             <li><a href="${selectTournamentForAddingCompetitorsHref}">Add Teams</a></li>
                         	  <c:url var="scheduleMatchesHref" value="/scheduleMatches" />
                             <li><a href="${scheduleMatchesHref}">Scheduler</a></li>
-                        	  <c:url var="recordResultsHref" value="/recordResults" />
+                        	  <c:url var="recordResultsHref" value="/selectTournamentForAddingResults" />
                             <li><a href="${recordResultsHref}">Track Results</a></li>
                          </ul>
                        		<c:url var="logoutAction" value="/logout" />

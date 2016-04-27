@@ -10,6 +10,7 @@ public interface TournamentDAO {
 	public List<Tournament> getListOfAllTournaments();
 	public Tournament getTournamentById(int tournamentId);
 	public int getTournamentIdByName(String tournamentName);
+	public List<Tournament> getListOfTournamentsByUserId(int userId);
 	
 	
 }
