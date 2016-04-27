@@ -69,11 +69,21 @@ public class TrackResultsController {
 	
 
 	@RequestMapping(path="/recordGameResults", method=RequestMethod.GET)
-	public String recordResults(Map<String, Object> model,
+	public String displayRecordResults(Map<String, Object> model,
 								@RequestParam(name="gameId") int gameId){
 		
 		Game game = gameDAO.getGameByGameId(gameId);
 		model.put("game", game);
+		return "recordGameResults";
+	}
+	
+	@RequestMapping(path="/recordGameScores", method=RequestMethod.POST)
+	public String recordScores(Map<String, Object> model,
+								@RequestParam(name="competitor1Score") int competitor1Score,
+								@RequestParam(name="competitor2Score") int competitor2Score,
+								@RequestParam(name="winner") String winner){
+		
+		
 		return "recordGameResults";
 	}
 	
