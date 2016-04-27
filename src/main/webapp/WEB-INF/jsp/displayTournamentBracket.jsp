@@ -13,35 +13,33 @@
 	    <c:url var="cssHref" value="/css/site.css" />
 		<link rel="stylesheet" type="text/css" href="${cssHref}">
 		
-	 <div class="row">
-   <div class="col-md-4">
-       
-      
+	 
+	<div class="bracketBack">
+	<main id="tournament">
+    <c:forEach var="round" items="${roundList}" varStatus="count">
+    
+    	
+	<ul class="round round-1">		
 	
-	<table class="table-condensed" style="width:100%">
-	
-	
-    <c:forEach var="round" items="${roundList}" varStatus="theCount">
+		<c:forEach var="game" items = "${round.gamesInRound}" >
+		
+			<li class="spacer">&nbsp;</li>
+			<li class="game game-top winner"><c:out value="${game.competitor1Name}"/> <span><c:out value="${game.gameNumber}"/></span></li>
+			<li class="game game-spacer">&nbsp;</li>
+			<li class="game game-bottom "><c:out value="${game.competitor2Name}"/><span><c:out value="${game.gameNumber}"/></span></li>
+
+			<li class="spacer">&nbsp;</li>
     	
     	
-    	<c:forEach var="game" items = "${round.gamesInRound}">
-         <tr>
-           <td class="col-md-5"><div class="input-group"><div class="form-control"><c:out value="${game.competitor1Name}"/></div><span class="input-group-addon"><span class="badge pull-right"><c:out value="${game.gameNumber}"/></span></span></div></td>
-          
-         </tr>
-          <tr>
-           <td class="col-md-5"><div class="input-group"><div class="form-control"><c:out value="${game.competitor2Name}"/></div><span class="input-group-addon"><span class="badge pull-right"><c:out value="${game.gameNumber}"/></span></span></div></td>
-          
-         </tr>
+        
     		</c:forEach>
-    	
+    	</ul>
     	</c:forEach>
-    </table>
-   </div>
- </div>
+    	</main>
+    
  
+</div>
  
-</table>
  
  
  
