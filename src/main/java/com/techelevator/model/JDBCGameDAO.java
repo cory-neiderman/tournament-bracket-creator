@@ -208,6 +208,12 @@ public class JDBCGameDAO implements GameDAO {
 		return game;
 	}
 
+	@Override
+	public void recordScore(String winner, int competitor1Score, int competitor1Score2) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 }

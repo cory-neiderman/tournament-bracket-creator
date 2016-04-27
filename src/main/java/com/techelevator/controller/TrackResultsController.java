@@ -84,6 +84,8 @@ public class TrackResultsController {
 								@RequestParam(name="winner") String winner){
 		
 		
+		gameDAO.recordScore(winner, competitor1Score, competitor1Score);
+		
 		return "recordGameResults";
 	}
 	
