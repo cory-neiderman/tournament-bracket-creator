@@ -15,7 +15,6 @@
 		
 	
 
-	<title>Add Competitors To Tournament</title>
 </head>
 	<body >
 	<br/>
@@ -30,7 +29,7 @@
     	<c:url value="/addCompetitorsToTournament" var="addTeams">
 			<c:param name="tournamentId" value="${tournament.tournamentId}" />
 		</c:url>
-    		<a id="TournamentLinks" href="${addTeams}">{ <c:out value="${tournament.tournamentName}"/> }</a>
+    		<a id="tournamentLinks" href="${addTeams}">{ <c:out value="${tournament.tournamentName}"/> }</a>
     	
     	</c:forEach>
     </ul>
@@ -38,6 +37,10 @@
     <br/>
     <br/>
     </div>
+    <br/>
+       <p align="center"  id="disclaimer">EARLY ACCESS DISCLAIMER</p>
+	        <br/>
+			<p align="center"  id="disclaimerText">The service is currently for testing purposes. Functionality and features may drastically change, and created content may not be available later. Your feedback is much appreciated!</p><br/>
     <br/>
 	</body>
 </html>

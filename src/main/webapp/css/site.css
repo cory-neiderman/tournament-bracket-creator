@@ -15,11 +15,11 @@ h2{
 }
 #disclaimer {
 	font-family: ‘Arial Black’, Gadget, sans-serif;
-	font-size: 25px;
+	font-size: 20px;
 }
 #disclaimerText {
 	font-family: ‘Arial Black’, Gadget, sans-serif;
-	font-size: 18px;
+	font-size: 15px;
 }
 div2 {
     font-size: 20px;
@@ -118,6 +118,8 @@ input, select, textarea{
 }
 #gameResults {
 	color: #ff0209;
+	font-size: 18px;
+	
 }
 #player {
 	color : #e19000;
@@ -180,7 +182,7 @@ table.bracket {
 }
 .bracketBack{
 	background-color: white;
-	height: 600px;
+	
 }
 main{
   display:flex;

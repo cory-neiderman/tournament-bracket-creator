@@ -20,17 +20,18 @@
 	<body>
 		<br/>
 		<div id="tournamentList">
+		<br/>
 		<h1 id="selectTournament">{ Add Results To A Tournament }</h1>
 		<br/>
 		<br/>
 		<br/>
     <ul>
     <c:forEach var="tournament" items="${tournamentList}">
-    	<li id="links">
+    	<li id="tournamentLinks">
     	<c:url value="/selectGameToAddResults" var="selectGameToAddResults">
 			<c:param name="tournamentId" value="${tournament.tournamentId}"/>
 		</c:url>
-    		<a id="links" href="${selectGameToAddResults}">{ <c:out value="${tournament.tournamentName}"/> }</a>
+    		<a id="tournamentLinks" href="${selectGameToAddResults}">{ <c:out value="${tournament.tournamentName}"/> }</a>
     	
     	</c:forEach>
     </ul>
@@ -38,6 +39,10 @@
     <br/>
     <br/>
     </div>
+    <br/>
+       <p align="center"  id="disclaimer">EARLY ACCESS DISCLAIMER</p>
+	        <br/>
+			<p align="center"  id="disclaimerText">The service is currently for testing purposes. Functionality and features may drastically change, and created content may not be available later. Your feedback is much appreciated!</p><br/>
     <br/>
 	</body>
 </html>

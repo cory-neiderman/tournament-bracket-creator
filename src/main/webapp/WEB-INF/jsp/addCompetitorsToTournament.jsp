@@ -74,17 +74,14 @@
 	</div>
 </div>
 <br/>
+   <p align="center"  id="disclaimer">EARLY ACCESS DISCLAIMER</p>
+	        <br/>
+			<p align="center"  id="disclaimerText">The service is currently for testing purposes. Functionality and features may drastically change, and created content may not be available later. Your feedback is much appreciated!</p><br/>
+<br/>
 <br/>
 <br/>
 <br/>
 
 </body>
 </html>
-	<!-- 
-		<c:url value="/addTeams" var="addTeams">
-			<c:param name="tournamentId" value="${tournament.tournamentId}"/>
-		</c:url>
-    	<c:forEach var="counter" begin="1" end="${maxTeams}">
-    		Competitor <c:out value="${counter}"/> Name: <input type="text"  name="competitorName"><br>
-    	</c:forEach>
-  -->
+	
