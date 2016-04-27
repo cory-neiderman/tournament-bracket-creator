@@ -97,7 +97,7 @@ public class JDBCGameDAO implements GameDAO {
 			game.setCompetitor2Score(results.getInt("competitor_2_score"));
 			if(results.getString("competitor_1") == null){
 				game.setCompetitor1Name("winner of previous");
-				game.setCompetitor2Name("winner of previous");
+				
 			}
 			else{
 				String sqlQueryForCompetitor1Name = "SELECT game.competitor_1, competitor.competitor_name "
@@ -110,15 +110,21 @@ public class JDBCGameDAO implements GameDAO {
 				competitor1Results.next();
 				game.setCompetitor1Name(competitor1Results.getString("competitor_name"));
 				
-				String sqlQueryForCompetitor2Name = "SELECT game.competitor_2, competitor.competitor_name "
-						+ "FROM competitor "
-						+ "INNER JOIN game "
-						+ "ON game.competitor_2=competitor.competitor_id "
-						+ "WHERE competitor_2=?";
 				
-				SqlRowSet competitor2Results = jdbcTemplate.queryForRowSet(sqlQueryForCompetitor2Name, results.getInt("competitor_2"));
-				competitor2Results.next();
-				game.setCompetitor2Name(competitor2Results.getString("competitor_name"));
+				if(results.getString("competitor_2") == null){
+					game.setCompetitor2Name("winner of previous");
+				}
+				else{
+					String sqlQueryForCompetitor2Name = "SELECT game.competitor_2, competitor.competitor_name "
+							+ "FROM competitor "
+							+ "INNER JOIN game "
+							+ "ON game.competitor_2=competitor.competitor_id "
+							+ "WHERE competitor_2=?";
+					
+					SqlRowSet competitor2Results = jdbcTemplate.queryForRowSet(sqlQueryForCompetitor2Name, results.getInt("competitor_2"));
+					competitor2Results.next();
+					game.setCompetitor2Name(competitor2Results.getString("competitor_name"));
+				}
 			}
 			gameList.add(game);
 			
@@ -143,7 +149,7 @@ public class JDBCGameDAO implements GameDAO {
 			
 			if(results.getString("competitor_1") == null){
 				game.setCompetitor1Name("winner of previous");
-				game.setCompetitor2Name("winner of previous");
+				
 			}
 			else{
 				String sqlQueryForCompetitor1Name = "SELECT game.competitor_1, competitor.competitor_name "
@@ -156,15 +162,21 @@ public class JDBCGameDAO implements GameDAO {
 				competitor1Results.next();
 				game.setCompetitor1Name(competitor1Results.getString("competitor_name"));
 				
-				String sqlQueryForCompetitor2Name = "SELECT game.competitor_2, competitor.competitor_name "
-						+ "FROM competitor "
-						+ "INNER JOIN game "
-						+ "ON game.competitor_2=competitor.competitor_id "
-						+ "WHERE competitor_2=?";
-				
-				SqlRowSet competitor2Results = jdbcTemplate.queryForRowSet(sqlQueryForCompetitor2Name, results.getInt("competitor_2"));
-				competitor2Results.next();
-				game.setCompetitor2Name(competitor2Results.getString("competitor_name"));
+				if(results.getString("competitor_2") == null){
+					
+					game.setCompetitor2Name("winner of previous");
+				}
+				else{
+					String sqlQueryForCompetitor2Name = "SELECT game.competitor_2, competitor.competitor_name "
+							+ "FROM competitor "
+							+ "INNER JOIN game "
+							+ "ON game.competitor_2=competitor.competitor_id "
+							+ "WHERE competitor_2=?";
+					
+					SqlRowSet competitor2Results = jdbcTemplate.queryForRowSet(sqlQueryForCompetitor2Name, results.getInt("competitor_2"));
+					competitor2Results.next();
+					game.setCompetitor2Name(competitor2Results.getString("competitor_name"));
+				}
 			}
 			gameList.add(game);
 			
@@ -243,6 +255,20 @@ public class JDBCGameDAO implements GameDAO {
 				String sqlUpdateQuery = "UPDATE game SET competitor_1 = ?  WHERE game_number = ? AND tournament_id = ?";
 				jdbcTemplate.update(sqlUpdateQuery, game.getWinnerCompetitorId(), nextGame, tournamentId);
 			}
+		}
+		if(game.getRoundNumber()==2){
+			int gameTracker=game.getGameNumber()-teams/2;
+			int nextGame=0;
+			if(game.getGameNumber()%2==0){
+				nextGame=teams*3/4+gameTracker/2;
+				String sqlUpdateQuery = "UPDATE game SET competitor_2 = ?  WHERE game_number = ? AND tournament_id = ?";
+				jdbcTemplate.update(sqlUpdateQuery, game.getWinnerCompetitorId(), nextGame, tournamentId);
+			}
+			else
+				gameTracker++;
+				nextGame=teams*3/4+gameTracker/2;
+				String sqlUpdateQuery = "UPDATE game SET competitor_1 = ?  WHERE game_number = ? AND tournament_id = ?";
+				jdbcTemplate.update(sqlUpdateQuery, game.getWinnerCompetitorId(), nextGame, tournamentId);
 		}
 		
 		
