@@ -270,6 +270,20 @@ public class JDBCGameDAO implements GameDAO {
 				String sqlUpdateQuery = "UPDATE game SET competitor_1 = ?  WHERE game_number = ? AND tournament_id = ?";
 				jdbcTemplate.update(sqlUpdateQuery, game.getWinnerCompetitorId(), nextGame, tournamentId);
 		}
+		if(game.getRoundNumber()==3){
+			int gameNumberOfRound=game.getGameNumber()-teams/4;
+			int nextGame=0;
+			if(game.getGameNumber()%2==0){
+				nextGame=teams*7/8+gameNumberOfRound/2;
+				String sqlUpdateQuery = "UPDATE game SET competitor_2 = ?  WHERE game_number = ? AND tournament_id = ?";
+				jdbcTemplate.update(sqlUpdateQuery, game.getWinnerCompetitorId(), nextGame, tournamentId);
+			}
+			else
+				gameNumberOfRound++;
+			nextGame=teams*7/8+gameNumberOfRound/2;
+				String sqlUpdateQuery = "UPDATE game SET competitor_1 = ?  WHERE game_number = ? AND tournament_id = ?";
+				jdbcTemplate.update(sqlUpdateQuery, game.getWinnerCompetitorId(), nextGame, tournamentId);
+		}
 		
 		
 		
