@@ -40,7 +40,7 @@
 			  	<div class="panel-heading">
 			  	<form id="login" action="login" method="POST">
 			  	<input type = "hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-			    	<h3 id="signIn"class="panel-title">Sign In</h3>
+			    	<h3 id="signIn"class="panel-title">{ Sign In }</h3>
 			 	</div>
 			  	<div class="panel-body">
 			    	<form accept-charset="UTF-8" role="form">
@@ -56,14 +56,17 @@
 			    	    		<input name="remember" type="checkbox" value="Remember Me"> Remember Me
 			    	    	</label>
 			    	    </div>
-			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="{ Login }">
 			    		<div style="color:red">${error}</div>
 			    	</fieldset>
+			    	<br/>
 			      	</form>
 			    </div>
 			</div>
 		</div>
 	</div>
 </div>
+<br/>
+<br/>
 </body>
 </html>

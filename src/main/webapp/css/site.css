@@ -9,11 +9,15 @@ h2{
 	font-family: ‘Arial Black’, Gadget, sans-serif;
 	font-size: 35px;
 }
-.live {
+#live {
 	font-family: ‘Arial Black’, Gadget, sans-serif;
-	font-size: 18px;
+	font-size: 20px;
 }
-.disclaimer {
+#disclaimer {
+	font-family: ‘Arial Black’, Gadget, sans-serif;
+	font-size: 25px;
+}
+#disclaimerText {
 	font-family: ‘Arial Black’, Gadget, sans-serif;
 	font-size: 18px;
 }
@@ -22,9 +26,7 @@ div2 {
     
 }
 body1{
-    background: url(http://mymaplist.com/img/parallax/back.png);
     background-color: #444;
-    background: url(http://mymaplist.com/img/parallax/pinlayer2.png),url(http://mymaplist.com/img/parallax/pinlayer1.png),url(http://mymaplist.com/img/parallax/back.png);    
 }
 .vertical-offset-100{
     padding-top:100px;
@@ -51,6 +53,7 @@ input{
 }
 a{
     color: white;
+    font-size : 14px;
 }
 input, select, textarea{
     color: black;
@@ -58,13 +61,10 @@ input, select, textarea{
 #signIn {
     color: #18a500;
 }
-.navButtons{
-	  color: black;
-}
 .container-fluid{
 	background-color: #bfbcc2;
-	
 }
+
 .col-sm-6{
 	color : white;
 }
@@ -81,14 +81,17 @@ input, select, textarea{
 }
 #verify{
 	text-align:center;
+	font-size: 55px;
+	color : #16b701;
 }
 #tournamentDetails{
-	 width:200px;
+	 width: 350px;
     text-align:left;
  	 margin: 1em auto;
+ 	 font-size: 18px;
 }
 #confirmTournament{
-	margin-left:auto;
+	margin-left:793px;
 	margin-right:auto;
 }
 
@@ -96,60 +99,71 @@ input, select, textarea{
 	border-style : solid;
 }
 
+#selectTournament {
+	text-align : center;
+	color : #16b701 ; 
+	font-size: 55px;
+}
+#tournamentList {
+	border-style : solid;
+}
+#links {
+	color : Black;
+	font-size : 25px;
+}
+
 #addTeamsTitle {
 	text-align: center;
 	font-size: 40px;
+	
 }
 .addTeamDiv {
 	height : 800px;
 }
 #displayTournaments {
 	text-align : center;
+	color : #16b701;
+	font-size: 55px;
 }
 .tournamentDisplay {
-	height : 400px;
+	height : 600px;
+	border-style: solid;
 }
 #tournamentLinks {
-	color : red;
+	color : black;
 	font-size: 25px;
+    text-align:left;
+ 	margin: 1em auto;
+ 	font-size: 25px;
 }
 #addCompetitiors {
 	color: #16b701;
 }
-
-
 table.bracket {
     border-collapse: collapse;
     border: none;
 }
-
 .bracket td {
     vertical-align: middle;
     width: 40em;
     margin: 0;
     padding: 10px;
 }
-
 .bracket td p {
     border-bottom: solid 1px black;
     margin: 0;
     padding: 5px 5px 5px 5px;
 }
-
 .bracket th{
     text-align:center;
 }
-
 .bracketBack{
 	background-color: white;
 }
-
 main{
   display:flex;
   flex-direction:row;
-  
 }
-
 .round{
   display:flex;
   flex-direction:column;
@@ -182,6 +196,7 @@ li.game{
 
   li.game.winner{
     font-weight:bold;
+    font-size : 16px;
   }
   li.game span{
     float:right;
@@ -197,4 +212,6 @@ li.game{
 
   li.game-bottom{ 
     border-top:1px solid #aaa;
+    font-weight:bold;
+    font-size : 16px;
   }

@@ -12,15 +12,20 @@
 	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	    <c:url var="cssHref" value="/css/site.css" />
 		<link rel="stylesheet" type="text/css" href="${cssHref}">
+		<br/>
 <div class="tournamentDisplay">
-	<h1 id="displayTournaments">Select a Tournament</h1>
+	<br/>
+	<br/>
+
+	<h1 id="displayTournaments">{ Select a Tournament }</h1>
+	<br/>
     <ul>
     <c:forEach var="tournament" items="${tournamentList}">
     	<li id="tournamentLinks">
     	<c:url value="/displayTournamentBracket" var="displayTournament">
 			<c:param name="tournamentId" value="${tournament.tournamentId}"/>
 		</c:url>
-    		<a id="tournamentLinks" href="${displayTournament}"><c:out value="${tournament.tournamentName}"/></a>
+    		<a id="tournamentLinks" href="${displayTournament}">{ <c:out value="${tournament.tournamentName}"/> }</a>
     	
     	</li>
     		
@@ -29,4 +34,5 @@
     </ul>
     </div>
 	</body>
+	<br/>
 </html>
