@@ -34,6 +34,11 @@ body1{
 #signUp{
     color: white;
 }
+#sign {
+	color: #ff0209;
+	font-size: 18px;
+	
+}
 #header{
     color: white;
 }
@@ -53,13 +58,14 @@ input{
 }
 a{
     color: white;
-    font-size : 14px;
+    font-size : 18px;
 }
 input, select, textarea{
     color: black;
 }
 #signIn {
-    color: #18a500;
+    color:#e19000;
+    font-size: 18px;
 }
 .container-fluid{
 	background-color: #bfbcc2;
@@ -74,16 +80,16 @@ input, select, textarea{
 	
 }
 #createYourTournament{
-	color: #16b701;
+	color: #e19000;
+	font-size: 18px;
 }
-
 #submit {
 	color: white;
 }
 #verify{
 	text-align:center;
 	font-size: 55px;
-	color : #16b701;
+	color : #e19000;
 }
 #tournamentDetails{
 	 width: 350px;
@@ -102,8 +108,22 @@ input, select, textarea{
 
 #selectTournament {
 	text-align : center;
-	color : #16b701 ; 
+	color : #e19000 ; 
 	font-size: 55px;
+}
+#aftermath {
+	text-align : center;
+	color : #ff0209 ; 
+	font-size: 55px;
+}
+#gameResults {
+	color: #ff0209;
+}
+#player {
+	color : #e19000;
+}
+.resultsAftermath {
+	background-color: #757476; 
 }
 #tournamentList {
 	border-style : solid;
@@ -123,7 +143,7 @@ input, select, textarea{
 }
 #displayTournaments {
 	text-align : center;
-	color : #16b701;
+	color : #e19000;
 	font-size: 55px;
 }
 .tournamentDisplay {
@@ -138,7 +158,7 @@ input, select, textarea{
  	font-size: 25px;
 }
 #addCompetitiors {
-	color: #16b701;
+	color: #e19000;
 }
 table.bracket {
     border-collapse: collapse;
@@ -151,7 +171,7 @@ table.bracket {
     padding: 10px;
 }
 .bracket td p {
-    border-bottom: solid 1px black;
+    border-bottom: solid 2px black;
     margin: 0;
     padding: 5px 5px 5px 5px;
 }
@@ -160,6 +180,7 @@ table.bracket {
 }
 .bracketBack{
 	background-color: white;
+	height: 600px;
 }
 main{
   display:flex;
@@ -204,15 +225,15 @@ li.game{
     margin-right:5px;
   }
 
-  li.game-top{ border-bottom:1px solid #aaa; }
+  li.game-top{ border-bottom:2px solid black; }
 
   li.game-spacer{ 
-    border-right:1px solid #aaa;
+    border-right:2px solid black;
     min-height:40px;
   }
 
   li.game-bottom{ 
-    border-top:1px solid #aaa;
+    border-top:2px solid black;
     font-weight:bold;
     font-size : 16px;
   }

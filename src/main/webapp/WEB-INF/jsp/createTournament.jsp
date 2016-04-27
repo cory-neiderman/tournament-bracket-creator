@@ -44,7 +44,7 @@
 			    		<div class="form-group">
 			    			<input class="form-control" placeholder="End Date" name="endDate" type="text" >
 			    		</div>
-			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="{ Submit Tournament }" id="submit">
+			    		<input class="btn btn-lg btn-warning btn-block" type="submit" value="{ Submit Tournament }" id="submit">
 			    		<div style="color:red">${error}</div>
 			    	</fieldset>
 			      	</form>

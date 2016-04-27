@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
-    </head>
+   
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
         <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.js "></script>
@@ -31,7 +31,7 @@
         <header>
             <img src="http://blog.flamingtext.com/blog/2016/04/20/flamingtext_com_1461173830_241360371.png" width="100%" height="270"/>
         </header>
-            <div class="container-fluid">
+            <div class="container-fluid" >
                 <ul class="nav navbar-nav">
                     <c:if test="${not empty user}">
                         <c:url var="dashboardHref" value="/users/${user}" />

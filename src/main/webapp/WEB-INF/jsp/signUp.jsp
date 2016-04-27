@@ -88,7 +88,7 @@ $("#userName").change(function() {
                 <div class="panel-heading">
                 <form id="signUp" action="newUserSignUp" method="POST">
                 <input type = "hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-                    <h3 id="signIn"class="panel-title">Create A {BRAKIT} Account</h3>
+                    <h3 id="sign"class="panel-title">Create A {BRAKIT} Account</h3>
                 </div>
                 <div class="panel-body">
                     <form accept-charset="UTF-8" role="form">
@@ -113,7 +113,7 @@ $("#userName").change(function() {
                                 <input name="role" type="checkbox" value="player"> Player
                             </label>
                         </div>
-                        <input class="btn btn-lg btn-success btn-block" type="submit" value="{ Sign Up }">
+                        <input class="btn btn-lg btn-danger btn-block" type="submit" value="{ Sign Up }">
                         <div style="color:red">${error}</div>
                     </fieldset>
                     </form>

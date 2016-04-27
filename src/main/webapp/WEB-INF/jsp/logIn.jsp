@@ -56,7 +56,7 @@
 			    	    		<input name="remember" type="checkbox" value="Remember Me"> Remember Me
 			    	    	</label>
 			    	    </div>
-			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="{ Login }">
+			    		<input class="btn btn-lg btn-warning btn-block" type="submit" value="{ Login }">
 			    		<div style="color:red">${error}</div>
 			    	</fieldset>
 			    	<br/>
