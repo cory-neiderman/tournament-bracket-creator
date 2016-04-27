@@ -49,18 +49,18 @@
             errorClass : "error"
         });
         
-/*$("#userName").change(function() {
+$("#userName").change(function() {
             
             var applicationURL = "http://localhost:8080/capstone/signUp/";
             var userName=$("#userName").val();
-            alert(userName);
+            
             
             $.ajax({
                 url : applicationURL+userName,
                 type : "GET",
                 dataType : "json"
             }).success(function(result) {
-                searhForUserName(result);
+            	 searchForUserName(result);
             }).fail(function(xhr, status, errorMessage) {
                 console.log(errorMessage);
                 console.log(status);
@@ -71,12 +71,12 @@
             
             
             });
-        
-        function searchForUserName(event){
-        
-            alert(event);
-            
-        }*/
+			function searchForUserName(nameSearchResult){
+	       
+	        	
+	            $("#nameSearch").replaceWith(nameSearchResult[0]);
+	               
+	        }
         
     });
 </script>
@@ -95,6 +95,7 @@
                     <fieldset>
                         <div class="form-group">
                             <input class="form-control" placeholder="Create Username" id="userName" name="userName" type="text">
+                        	<div id="nameSearch"></div>
                         </div>
                         <div class="form-group">
                             <input class="form-control" placeholder="Create Password" name="password" type="password" >
