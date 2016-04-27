@@ -93,7 +93,7 @@ public class TrackResultsController {
 		int teams = tournamentDAO.getMaxTeamsByTournamentId(tournament.getTournamentId());
 		
 		Game gameRecorded = gameDAO.getGameByGameId(game.getGameId());
-		gameDAO.advanceWinner(gameRecorded);
+		gameDAO.advanceWinner(gameRecorded, teams, tournament.getTournamentId());
 		
 		
 		return "redirect: afterGameRecorded";
