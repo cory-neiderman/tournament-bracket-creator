@@ -130,6 +130,7 @@ $("#userName").change(function() {
                 <div class="col-sm-6">
                 <br/>
                 <br/>
+                <br/>
             <strong>Password Rules:</strong>
             <ul>
                 <li>Must be at least 8 characters long</li>

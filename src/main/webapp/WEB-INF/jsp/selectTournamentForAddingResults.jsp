@@ -15,19 +15,29 @@
 		
 	
 
-	<title>Select a Tournament to record results</title>
+	<title>{ Add Results To A Tournament }</title>
 </head>
 	<body>
-		<h1>Select a Tournament to record results</h1>
+		<br/>
+		<div id="tournamentList">
+		<h1 id="selectTournament">{ Add Results To A Tournament }</h1>
+		<br/>
+		<br/>
+		<br/>
     <ul>
     <c:forEach var="tournament" items="${tournamentList}">
     	<li id="links">
     	<c:url value="/selectGameToAddResults" var="selectGameToAddResults">
 			<c:param name="tournamentId" value="${tournament.tournamentId}"/>
 		</c:url>
-    		<a href="${selectGameToAddResults}"><c:out value="${tournament.tournamentName}"/></a>
+    		<a id="links" href="${selectGameToAddResults}">{ <c:out value="${tournament.tournamentName}"/> }</a>
     	
     	</c:forEach>
     </ul>
+       <br/>
+    <br/>
+    <br/>
+    </div>
+    <br/>
 	</body>
 </html>
