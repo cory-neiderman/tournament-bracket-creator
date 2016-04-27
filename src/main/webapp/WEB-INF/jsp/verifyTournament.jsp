@@ -17,15 +17,23 @@
 	<html>
 </head>
 	<body>
-		<h1>Please verify that your tournament details are correct</h1>
-		<ul>
-			<li><strong>Tournament Name: </strong><c:out value="${tournament.tournamentName}" />
-			<li><strong>Sport: </strong><c:out value="${tournament.sport}" />
-			<li><strong>Number of Teams: </strong><c:out value="${tournament.maxTeams}" />
-			<li><strong>Start Date: </strong><c:out value="${tournament.startDateAsString}" />
-			<li><strong>End Date: </strong><c:out value="${tournament.endDateAsString}" />
+	<div class="tournamentDetails">
+		<h1 id="verify">Verify Tournament</h1><br/>
+		<ul id="tournamentDetails">
+			<li id="tournamentDetails"><strong>Tournament Name: </strong><c:out value="${tournament.tournamentName}" />
+			<li id="tournamentDetails"><strong>Sport: </strong><c:out value="${tournament.sport}" />
+			<li id="tournamentDetails"><strong>Number of Teams: </strong><c:out value="${tournament.maxTeams}" />
+			<li id="tournamentDetails"><strong>Start Date: </strong><c:out value="${tournament.startDateAsString}" />
+			<li id="tournamentDetails"><strong>End Date: </strong><c:out value="${tournament.endDateAsString}" />
 		</ul>
-	<form id="confirmTournament" action="confirmTournament" method="POST">
-	<input type="submit" value="Confirm"></form>
+		<br/>
+		
+	<form id="confirmTournament" action="confirmTournament" method="POST" >
+	<input class="btn btn-block btn-lg btn-warning" type="submit" value="{ Confirm Tournament }">
+	
+				<br/>
+				</form>
+				</div>
+	
 </body>
 </html>

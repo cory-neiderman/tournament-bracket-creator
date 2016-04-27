@@ -1,19 +1,27 @@
 html{
-    Background-color : #acacac;
+    Background-color : #757476;
 }
 h2{ 
     float: right;
 }
-h1 {
-font-family: ‘Arial Black’, Gadget, sans-serif;
-font-size: 28px;
-color: white;
+
+#followAnd {
+	font-family: ‘Arial Black’, Gadget, sans-serif;
+	font-size: 35px;
+}
+.live {
+	font-family: ‘Arial Black’, Gadget, sans-serif;
+	font-size: 18px;
+}
+.disclaimer {
+	font-family: ‘Arial Black’, Gadget, sans-serif;
+	font-size: 18px;
 }
 div2 {
     font-size: 20px;
     
 }
-body{
+body1{
     background: url(http://mymaplist.com/img/parallax/back.png);
     background-color: #444;
     background: url(http://mymaplist.com/img/parallax/pinlayer2.png),url(http://mymaplist.com/img/parallax/pinlayer1.png),url(http://mymaplist.com/img/parallax/back.png);    
@@ -38,7 +46,8 @@ input{
     color: black;
 }
 #links{
-    color: white;
+    color: black;
+    font-size : 20px;
 }
 a{
     color: white;
@@ -47,8 +56,67 @@ input, select, textarea{
     color: black;
 }
 #signIn {
-    color: black;
+    color: #18a500;
 }
+.navButtons{
+	  color: black;
+}
+.container-fluid{
+	background-color: #bfbcc2;
+	
+}
+.col-sm-6{
+	color : white;
+}
+#newTournament{
+	color:black;
+	
+}
+#createYourTournament{
+	color: #16b701;
+}
+
+#submit {
+	color: white;
+}
+#verify{
+	text-align:center;
+}
+#tournamentDetails{
+	 width:200px;
+    text-align:left;
+ 	 margin: 1em auto;
+}
+#confirmTournament{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.tournamentDetails {
+	border-style : solid;
+}
+
+#addTeamsTitle {
+	text-align: center;
+	font-size: 40px;
+}
+.addTeamDiv {
+	height : 800px;
+}
+#displayTournaments {
+	text-align : center;
+}
+.tournamentDisplay {
+	height : 400px;
+}
+#tournamentLinks {
+	color : red;
+	font-size: 25px;
+}
+#addCompetitiors {
+	color: #16b701;
+}
+
 
 table.bracket {
     border-collapse: collapse;

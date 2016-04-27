@@ -1,4 +1,5 @@
 
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 		
 		
@@ -31,7 +32,7 @@
 });
 </script>
 
-<body>
+<body id="body1">
 <div class="container">
     <div class="row vertical-offset-100">
         <div class="col-md-4 col-md-offset-4">
@@ -39,7 +40,7 @@
 			  	<div class="panel-heading">
 			  	<form id="login" action="login" method="POST">
 			  	<input type = "hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-			    	<h3 id="signIn"class="panel-title">Please sign in</h3>
+			    	<h3 id="signIn"class="panel-title">Sign In</h3>
 			 	</div>
 			  	<div class="panel-body">
 			    	<form accept-charset="UTF-8" role="form">
@@ -66,4 +67,3 @@
 </div>
 </body>
 </html>
-	

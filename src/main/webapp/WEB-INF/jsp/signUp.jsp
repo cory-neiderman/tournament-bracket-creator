@@ -3,19 +3,17 @@
         
     <c:import url="/WEB-INF/jsp/header.jsp" />
     
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
         <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.js "></script>
         <script src="https://cdn.jsdelivr.net/jquery.timeago/1.4.1/jquery.timeago.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <c:url var="cssHref" value="/css/site.css" />
         <link rel="stylesheet" type="text/css" href="${cssHref}">
-
         
 <c:url var="pwValidationSrc" value="/passwordValidation.js" />
 <script src="${pwValidationSrc}"></script>
-
 <script type="text/javascript">
     $(document).ready(function () {
         
@@ -37,9 +35,6 @@
                 confirmPassword : {
                     required : true,        
                     equalTo : "#password"  
-                },
-                role:{
-                	required: true
                 }
             },
             messages : {            
@@ -54,18 +49,18 @@
             errorClass : "error"
         });
         
-$("#userName").change(function() {
+/*$("#userName").change(function() {
             
             var applicationURL = "http://localhost:8080/capstone/signUp/";
             var userName=$("#userName").val();
-            
+            alert(userName);
             
             $.ajax({
                 url : applicationURL+userName,
                 type : "GET",
                 dataType : "json"
             }).success(function(result) {
-                searchForUserName(result);
+                searhForUserName(result);
             }).fail(function(xhr, status, errorMessage) {
                 console.log(errorMessage);
                 console.log(status);
@@ -77,12 +72,11 @@ $("#userName").change(function() {
             
             });
         
-        function searchForUserName(nameSearchResult){
+        function searchForUserName(event){
         
-        	
-            $("#nameSearch").replaceWith(nameSearchResult[0]);
-               
-        }
+            alert(event);
+            
+        }*/
         
     });
 </script>
@@ -93,19 +87,15 @@ $("#userName").change(function() {
             <div class="panel panel-default">
                 <div class="panel-heading">
                 <form id="signUp" action="newUserSignUp" method="POST">
-                 
                 <input type = "hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-                    <h3 id="signIn"class="panel-title">Create Your {BRAKIT} Account Here!</h3>
+                    <h3 id="signIn"class="panel-title">Create A {BRAKIT} Account</h3>
                 </div>
                 <div class="panel-body">
-                    
+                    <form accept-charset="UTF-8" role="form">
                     <fieldset>
-                        <div class="form-group" >
+                        <div class="form-group">
                             <input class="form-control" placeholder="Create Username" id="userName" name="userName" type="text">
-                            <div id="nameSearch"></div>
-                            
                         </div>
-                        
                         <div class="form-group">
                             <input class="form-control" placeholder="Create Password" name="password" type="password" >
                         </div>
@@ -123,17 +113,14 @@ $("#userName").change(function() {
                             </label>
                         </div>
                         <input class="btn btn-lg btn-success btn-block" type="submit" value="Sign Up">
-                        <div style="color:red">${signUpError}</div>
-                        
+                        <div style="color:red">${error}</div>
                     </fieldset>
                     </form>
-                   
                 </div>
             </div>
         </div>
     </div>
 </div>
-        
         
         <c:url var = "loginPage" value="/"/>
         <p>

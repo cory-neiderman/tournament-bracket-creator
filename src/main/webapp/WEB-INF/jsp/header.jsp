@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
     </head>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
         <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.js "></script>
@@ -32,7 +31,6 @@
         <header>
             <img src="http://blog.flamingtext.com/blog/2016/04/20/flamingtext_com_1461173830_241360371.png" width="100%" height="270"/>
         </header>
-        <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
                     <c:if test="${not empty user}">
@@ -44,11 +42,11 @@
                         <c:when test="${empty user}">
                         <ul class="nav navbar-nav navbar-right">
                           <c:url var="homepageHref" value="/homepage" />
-                   			<li><a href="${homepageHref}">Home</a></li>
+                   			<li class="navButtons"><a href="${homepageHref}">Home</a></li>
                    			<c:url var="loginHref" value="/" />
-							<li><a href="${loginHref}">Log In</a></li>
+							<li class="navButtons"><a href="${loginHref}">Log In</a></li>
                             <c:url var="signUpHref" value="/signUp" />
-                            <li><a href="${signUpHref}">Sign Up</a></li>
+                            <li class="navButtons"><a href="${signUpHref}">Sign Up</a></li>
                                   </ul>
                         </c:when>
                   
@@ -84,12 +82,6 @@
                             		<li><a id="logoutLink" href="#">Log Out</a></li>
                         </ul>
                         </c:otherwise>
-                        
-                        
                     </c:choose>
             </div>
         </nav>
-        <c:if test="${not empty user}">
-            <p id="currentUser">Current User: ${user}</p>
-        </c:if>       
-        <div class="container"></div>
