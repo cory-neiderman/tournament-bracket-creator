@@ -73,6 +73,8 @@ public class Game {
 		this.winnerCompetitorId = winnerCompetitorId;
 	}
 	public String getCompetitor1Name() {
+		
+		
 		return competitor1Name;
 	}
 	public void setCompetitor1Name(String competitor1Name) {

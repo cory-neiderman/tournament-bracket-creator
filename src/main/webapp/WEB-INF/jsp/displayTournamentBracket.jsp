@@ -27,9 +27,9 @@
 		<c:forEach var="game" items = "${round.gamesInRound}" >
 		
 			<li class="spacer">&nbsp;</li>
-			<li id="player" class="game game-top winner">{ <c:out value="${game.competitor1Name}"/> }<span><c:out value="${game.gameNumber}"/></span></li>
+			<li id="player" class="game game-top winner">{ <c:out value="${game.competitor1Name}"/> }<span><c:out value="${game.competitor1Score}"/></span></li>
 			<li class="game game-spacer">&nbsp;</li>
-			<li id="player" class="game game-bottom ">{ <c:out value="${game.competitor2Name}"/> }<span><c:out value="${game.gameNumber}"/></span></li>
+			<li id="player" class="game game-bottom ">{ <c:out value="${game.competitor2Name}"/> }<span><c:out value="${game.competitor2Score}"/></span></li>
 
 			<li class="spacer">&nbsp;</li>
     	

@@ -93,6 +93,8 @@ public class JDBCGameDAO implements GameDAO {
 			Game game = new Game();
 			game.setGameNumber(results.getInt("game_number"));
 			game.setTournamentId(tournamentId);
+			game.setCompetitor1Score(results.getInt("competitor_1_score"));
+			game.setCompetitor2Score(results.getInt("competitor_2_score"));
 			if(results.getString("competitor_1") == null){
 				game.setCompetitor1Name("winner of previous");
 				game.setCompetitor2Name("winner of previous");
@@ -138,6 +140,7 @@ public class JDBCGameDAO implements GameDAO {
 			game.setGameNumber(results.getInt("game_number"));
 			game.setTournamentId(tournamentId);
 			game.setGameId(results.getInt("game_id"));
+			
 			if(results.getString("competitor_1") == null){
 				game.setCompetitor1Name("winner of previous");
 				game.setCompetitor2Name("winner of previous");
@@ -180,6 +183,8 @@ public class JDBCGameDAO implements GameDAO {
 		results.next();
 		Game game = new Game();
 		game.setGameNumber(results.getInt("game_number"));
+		game.setGameId(gameId);
+		
 		if(results.getString("competitor_1") == null){
 			game.setCompetitor1Name("winner of previous");
 			game.setCompetitor2Name("winner of previous");
@@ -194,7 +199,7 @@ public class JDBCGameDAO implements GameDAO {
 			SqlRowSet competitor1Results = jdbcTemplate.queryForRowSet(sqlQueryForCompetitor1Name, results.getInt("competitor_1"));
 			competitor1Results.next();
 			game.setCompetitor1Name(competitor1Results.getString("competitor_name"));
-			
+			game.setCompetitor1(competitor1Results.getInt("competitor_1"));
 			String sqlQueryForCompetitor2Name = "SELECT game.competitor_2, competitor.competitor_name "
 					+ "FROM competitor "
 					+ "INNER JOIN game "
@@ -203,14 +208,18 @@ public class JDBCGameDAO implements GameDAO {
 			
 			SqlRowSet competitor2Results = jdbcTemplate.queryForRowSet(sqlQueryForCompetitor2Name, results.getInt("competitor_2"));
 			competitor2Results.next();
+			game.setCompetitor2(competitor2Results.getInt("competitor_2"));
 			game.setCompetitor2Name(competitor2Results.getString("competitor_name"));
 		}
 		return game;
 	}
 
 	@Override
-	public void recordScore(String winner, int competitor1Score, int competitor1Score2) {
-		// TODO Auto-generated method stub
+	public void recordScore(int winnerId, int competitor1Score, int competitor2Score, int gameId) {
+		
+		String sqlUpdateQuery = "UPDATE game SET competitor_1_score = ?, competitor_2_score = ?, competitor_winner_id = ? WHERE game_id = ?";
+		
+		jdbcTemplate.update(sqlUpdateQuery, competitor1Score, competitor2Score, winnerId, gameId);
 		
 	}
 

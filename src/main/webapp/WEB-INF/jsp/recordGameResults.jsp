@@ -32,25 +32,29 @@
                     <form accept-charset="UTF-8" role="form">
                     <fieldset>
                         <div class="form-group">
-                            <input class="form-control" placeholder="{ Player 1 Score }" name="competitor1Score" type="text">
+                       
+                            <input class="form-control" placeholder=" ${game.competitor1Name} Score" name="competitor1Score" type="text">
                         	<div id="nameSearch"></div>
                         </div>
                           <div class="checkbox">
                             <label>
-                                <input name="winner" type="checkbox" value="competitor1" > Winner?
+                            ${game.competitor1}
+                                <input name="winnerId" type="checkbox" value="${game.competitor1}" > Winner?
                             </label>
                             <br/>
                         <div class="form-group">
                                                     <br/>
                         
-                            <input class="form-control" placeholder="{ Player 2 Score }" name="competitor2Score" type="text" >
+                            <input class="form-control" placeholder=" ${game.competitor2Name} Score" name="competitor2Score" type="text" >
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input name="role" type="checkbox" value="competitor2"> Winner?
+                            ${game.competitor2}
+                                <input name="winnerId" type="checkbox" value="${game.competitor2}"> Winner?
                             </label>
                         </div>
                         <input class="btn btn-lg btn-danger btn-block" type="submit" value="{ Record }">
+                        ${game.gameId}
                         <div style="color:red">${error}</div>
                     </fieldset>
                     </form>

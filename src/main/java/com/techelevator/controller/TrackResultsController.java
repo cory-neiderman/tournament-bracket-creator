@@ -24,7 +24,7 @@ import com.techelevator.model.User;
 
 @Controller
 @Transactional
-@SessionAttributes({"tournament", "user", "allCompetitors", "teamError", "tournamentId", "gameList"})
+@SessionAttributes({"tournament", "user", "allCompetitors", "teamError", "tournamentId", "gameList", "game"})
 public class TrackResultsController {
 	
 	private TournamentDAO tournamentDAO;
@@ -49,7 +49,7 @@ public class TrackResultsController {
 	}
 	
 	@RequestMapping(path="/selectGameToAddResults", method=RequestMethod.GET)
-	public String displayAddCompetitorsForm(Map<String, Object> model,
+	public String displayGameToAddResultsForm(Map<String, Object> model,
 													@RequestParam(name="tournamentId") int tournamentId){
 		Tournament tournament = new Tournament();
 		tournament.setTournamentId(tournamentId);
@@ -74,6 +74,7 @@ public class TrackResultsController {
 		
 		Game game = gameDAO.getGameByGameId(gameId);
 		model.put("game", game);
+		
 		return "recordGameResults";
 	}
 	
@@ -81,16 +82,24 @@ public class TrackResultsController {
 	public String recordScores(Map<String, Object> model,
 								@RequestParam(name="competitor1Score") int competitor1Score,
 								@RequestParam(name="competitor2Score") int competitor2Score,
-								@RequestParam(name="winner") String winner){
+								@RequestParam(name="winnerId") int winnerId){
 		
 		
-		gameDAO.recordScore(winner, competitor1Score, competitor1Score);
+		Game game = (Game)model.get("game");
 		
-		return "recordGameResults";
+		
+		
+		gameDAO.recordScore(winnerId, competitor1Score, competitor2Score, game.getGameId());
+		
+		return "redirect: afterGameRecorded";
 	}
 	
 	
+	@RequestMapping(path="/afterGameRecorded", method=RequestMethod.GET)
+	public String displayAfterGameRecorded(){
 		
+		return "afterGameRecorded";
+	}
 		
 
 	

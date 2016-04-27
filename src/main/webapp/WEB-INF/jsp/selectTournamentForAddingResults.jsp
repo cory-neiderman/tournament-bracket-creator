@@ -26,7 +26,7 @@
 		<br/>
     <ul>
     <c:forEach var="tournament" items="${tournamentList}">
-    	<li id="links">
+    	<li id="tournamentLinks">
     	<c:url value="/selectGameToAddResults" var="selectGameToAddResults">
 			<c:param name="tournamentId" value="${tournament.tournamentId}"/>
 		</c:url>

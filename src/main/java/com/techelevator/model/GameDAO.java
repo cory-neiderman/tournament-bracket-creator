@@ -11,6 +11,6 @@ public interface GameDAO {
 	List<Game> getGameListByRoundAndTournamentId(int tournamentId, int i);
 	List<Game> getGameListByTournamentId(int tournamentId);
 	Game getGameByGameId(int gameId);
-	void recordScore(String winner, int competitor1Score, int competitor1Score2);
+	void recordScore(int winnerId, int competitor1Score, int competitor1Score2, int gameId);
 
 }
