@@ -162,9 +162,14 @@ input, select, textarea{
 #addCompetitiors {
 	color: #e19000;
 }
-
-
-
+#champ {
+	text-align: center;
+	color: #e19000;
+	font-size: 55px;
+}
+#gameNumber{
+	text-align: left;
+	font-size: 10px;
 }
 .bracketBack{
 	background-color: white;

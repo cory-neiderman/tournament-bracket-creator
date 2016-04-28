@@ -3,13 +3,14 @@
 		
 		
 	<c:import url="/WEB-INF/jsp/header.jsp" />
-		
 
-		
-	 <br/>
-	 <br/>
 	  <br/>
 	   <br/>
+	   <c:if test="${tournament.championId != ''}">
+	   <h1 id="champ">{ <c:out value="${championName}"/> is the Champion of <c:out value="${tournament.tournamentName}"/> }</h1> </c:if>
+		 <br/>
+		 <br/>
+	
 	<div class="bracketBack">
 	<main id="tournament">
     <c:forEach var="round" items="${roundList}" >
@@ -21,7 +22,7 @@
 		
 			<li class="spacer">&nbsp;</li>
 			<li id="player" class="game game-top ">{ <c:out value="${game.competitor1Name}"/> }<span><c:out value="${game.competitor1Score}"/></span></li>
-			<li class="game game-spacer"> game ${game.gameNumber}&nbsp;</li>
+			<li id="gameNumber"class="game game-spacer"> Game ${game.gameNumber}&nbsp;</li>
 			<li id="player" class="game game-bottom ">{ <c:out value="${game.competitor2Name}"/> }<span><c:out value="${game.competitor2Score}"/></span></li>
 			<li class="spacer">&nbsp;</li>
     	
@@ -29,8 +30,7 @@
     </ul>
     	</c:forEach>
     	</main>
-    	
-    	${championName}
+    
     	<br/>
     	<br/>
     

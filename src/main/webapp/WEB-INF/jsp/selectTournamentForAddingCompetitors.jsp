@@ -23,6 +23,7 @@
 		<br/>
 		<br/>
 		<br/>
+		
     <ul>
     <c:forEach var="tournament" items="${tournamentList}">
     	<li id="tournamentLinks">
