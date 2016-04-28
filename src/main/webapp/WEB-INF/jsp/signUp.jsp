@@ -77,38 +77,42 @@ $("#userName").change(function() {
 <div class="container">
     <div class="row vertical-offset-100">
         <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
+            <div class="panel panel-default" id="panel-test">
                 <div class="panel-heading">
-                <form id="signUp" action="newUserSignUp" method="POST">
-                <input type = "hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
                     <h3 id="sign"class="panel-title">Create A {BRAKIT} Account</h3>
                 </div>
+                <input type = "hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
                 <div class="panel-body">
-                    <form accept-charset="UTF-8" role="form">
-                    <fieldset>
-                        <div class="form-group">
-                            <input class="form-control" placeholder="Create Username" id="userName" name="userName" type="text">
-                        	<div id="nameSearch"></div>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" placeholder="Create Password" name="password" type="password" >
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" placeholder="Confirm Password" name="confirmPassword" type="password" >
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input name="role" type="radio" value="host" > Host
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input name="role" type="radio" value="player"> Player
-                            </label>
-                        </div>
-                        <input class="btn btn-lg btn-danger btn-block" type="submit" value="{ Sign Up }">
-                        <div style="color:red">${signUpError}</div>
-                    </fieldset>
+                <form id="signUp" action="newUserSignUp" method="POST" role="form">
+                   <!--  <form accept-charset="UTF-8" role="form"> --> 
+                   <div class="inputBox">
+                   
+			                    <fieldset>
+			                        <div class="form-group">
+			                            <input class="form-control" placeholder="Create Username" id="userName" name="userName" type="text">
+			                        	<div id="nameSearch"></div>
+			                        </div>
+			                        <div class="form-group">
+			                            <input class="form-control" placeholder="Create Password" name="password" type="password" style="width:320px;">
+			                        </div>
+			                        <div class="form-group">
+			                            <input class="form-control" placeholder="Confirm Password" name="confirmPassword" type="password" >
+			                        </div>
+			                        <div class="checkbox">
+			                            <label>
+			                                <input name="role" type="radio" value="host" > Host
+			                            </label>
+			                        </div>
+			                        <div class="checkbox">
+			                            <label>
+			                                <input name="role" type="radio" value="player"> Player
+			                            </label>
+			                        </div>
+			                        <input class="btn btn-lg btn-danger btn-block" type="submit" value="{ Sign Up }">
+			                        <div style="color:red">${signUpError}</div>
+			                    </fieldset>
+			                    
+			           </div>         
                     </form>
                 </div>
             </div>

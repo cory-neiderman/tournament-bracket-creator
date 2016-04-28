@@ -4,10 +4,15 @@ html{
 h2{ 
     float: right;
 }
-
+.panel-center{
+	align:center;
+}
 #followAnd {
 	font-family: ‘Arial Black’, Gadget, sans-serif;
 	font-size: 35px;
+}
+.container{
+	align:center;
 }
 #live {
 	font-family: ‘Arial Black’, Gadget, sans-serif;
@@ -32,7 +37,7 @@ body1{
     padding-top:100px;
 }
 #signUp{
-    color: white;
+    color: black;
 }
 #sign {
 	color: #ff0209;
@@ -99,7 +104,7 @@ input, select, textarea{
  	 font-size: 18px;
 }
 #confirmTournament{
-	margin-left:660px;
+	margin-left:793px;
 	margin-right:auto;
 }
 
@@ -141,6 +146,11 @@ input, select, textarea{
 	font-size: 40px;
 	
 }
+#champ1 {
+	text-align: center;
+	color: #e19000;
+	font-size: 55px;
+}
 .addTeamDiv {
 	height : 800px;
 }
@@ -161,7 +171,11 @@ input, select, textarea{
  	font-size: 25px;
 }
 #addCompetitiors {
-	color: #e19000;
+	color: #ff0209;
+}
+#checkbox {
+	color : #ff0209;
+	size: 12px;
 }
 #verifyRseults{
 	text-align:center;

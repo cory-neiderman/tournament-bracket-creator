@@ -7,7 +7,7 @@
 	  <br/>
 	   <br/>
 	   <c:choose>
-	   <c:when test="${tournament.championId != ''}"><h1 id="champ">{ <c:out value="${championName}"/> is the Champion of <c:out value="${tournament.tournamentName}"/> }</h1>
+	   <c:when test="${tournament.championId != ''}"><h1 id="champ1">{ <c:out value="${championName}"/> is the Champion of <c:out value="${tournament.tournamentName}"/> }</h1>
 	    </c:when>
 	    <c:otherwise><h1 id="champ1">{ <c:out value="${tournament.tournamentName}"/> }</h1></c:otherwise>
 	    </c:choose>

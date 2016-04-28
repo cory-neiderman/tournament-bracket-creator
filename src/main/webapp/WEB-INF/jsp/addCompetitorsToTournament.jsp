@@ -64,7 +64,7 @@
 			    		    <input class="form-control" placeholder="Competitor Name" name="competitorName" type="text">
 			    		</div>
 			    	</c:forEach>
-			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="{ Submit }" id="submit">
+			    		<input class="btn btn-lg btn-danger btn-block" type="submit" value="{ Submit }" id="submit">
 			    		<div style="color:red">${teamError}</div>
 			    	</fieldset>
 			      	</form>
