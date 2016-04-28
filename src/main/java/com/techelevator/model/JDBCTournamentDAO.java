@@ -103,6 +103,7 @@ public class JDBCTournamentDAO implements TournamentDAO {
 		tournament.setEndDate(LocalDate.parse(results.getString("end_date")));
 		tournament.setMaxTeams(results.getInt("max_teams"));
 		tournament.setTournamentId(results.getInt("tournament_id"));
+		tournament.setChampionId(results.getInt("champion_id"));
 		
 		return tournament;
 	}

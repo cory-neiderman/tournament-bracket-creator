@@ -64,8 +64,12 @@ public class DisplayTournamentController {
 			roundList.add(round);
 		}
 		
-		
 		model.put("roundList", roundList);
+		
+		if(tournament.getChampionId()!=0){
+			String championName=competitorDAO.getNameById(tournament.getChampionId());
+			model.put("championName", championName);
+		}
 		
 		return "displayTournamentBracket";
 	}
