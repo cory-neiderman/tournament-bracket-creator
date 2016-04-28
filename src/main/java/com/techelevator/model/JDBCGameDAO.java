@@ -97,7 +97,7 @@ public class JDBCGameDAO implements GameDAO {
 			game.setCompetitor2Score(results.getInt("competitor_2_score"));
 			
 			if(results.getString("competitor_1") == null){
-				game.setCompetitor1Name("winner of previous");
+				game.setCompetitor1Name("tba");
 				
 			}
 			else{
@@ -113,7 +113,7 @@ public class JDBCGameDAO implements GameDAO {
 				
 			}	
 			if(results.getString("competitor_2") == null){
-					game.setCompetitor2Name("winner of previous");
+					game.setCompetitor2Name("tba");
 				}
 				else{
 					String sqlQueryForCompetitor2Name = "SELECT game.competitor_2, competitor.competitor_name "
