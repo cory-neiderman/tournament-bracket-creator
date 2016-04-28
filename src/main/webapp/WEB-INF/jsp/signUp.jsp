@@ -3,14 +3,7 @@
         
     <c:import url="/WEB-INF/jsp/header.jsp" />
     
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
-        <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.js "></script>
-        <script src="https://cdn.jsdelivr.net/jquery.timeago/1.4.1/jquery.timeago.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <c:url var="cssHref" value="/css/site.css" />
-        <link rel="stylesheet" type="text/css" href="${cssHref}">
+
         
 <c:url var="pwValidationSrc" value="/passwordValidation.js" />
 <script src="${pwValidationSrc}"></script>
@@ -114,7 +107,7 @@ $("#userName").change(function() {
                             </label>
                         </div>
                         <input class="btn btn-lg btn-danger btn-block" type="submit" value="{ Sign Up }">
-                        <div style="color:red">${error}</div>
+                        <div style="color:red">${signUpError}</div>
                     </fieldset>
                     </form>
                 </div>
