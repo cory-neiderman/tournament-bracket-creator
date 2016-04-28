@@ -57,9 +57,7 @@
                           <c:url var="createTournamentHref" value="/createTournament" />
                             <li><a href="${createTournamentHref}">Tournament Creator</a></li>
                         	  <c:url var="selectTournamentForAddingCompetitorsHref" value="/selectTournamentForAddingCompetitors" />
-                            <li><a href="${selectTournamentForAddingCompetitorsHref}">Add Teams</a></li>
-                        	  <c:url var="scheduleMatchesHref" value="/scheduleMatches" />
-                            <li><a href="${scheduleMatchesHref}">Scheduler</a></li>
+                            <li><a href="${selectTournamentForAddingCompetitorsHref}">Add Competitors</a></li>
                         	  <c:url var="recordResultsHref" value="/selectTournamentForAddingResults" />
                             <li><a href="${recordResultsHref}">Track Results</a></li>
                          </ul>

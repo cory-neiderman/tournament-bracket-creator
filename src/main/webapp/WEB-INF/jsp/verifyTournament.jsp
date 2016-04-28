@@ -32,7 +32,7 @@
 		<br/>
 		
 	<form id="confirmTournament" action="confirmTournament" method="POST" >
-	<input class="btn btn-block btn-lg btn-warning" type="submit" value="{ Confirm Tournament }">
+	<input class="btn btn-lg btn-warning btn-block" type="submit" value="{ Confirm Tournament }">
 	
 				<br/>
 				<br/>
