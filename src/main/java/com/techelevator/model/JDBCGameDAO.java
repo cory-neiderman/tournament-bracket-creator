@@ -243,6 +243,9 @@ public class JDBCGameDAO implements GameDAO {
 	@Override
 	public void advanceWinner(Game game, int teams, int tournamentId) {
 		
+		
+		//teams/2^round+gameNumberOfRound/2^round
+		
 		if(game.getRoundNumber()==1){
 			int gameTracker=0;
 			int nextGame=0;
@@ -289,6 +292,9 @@ public class JDBCGameDAO implements GameDAO {
 				jdbcTemplate.update(sqlUpdateQuery, game.getWinnerCompetitorId(), nextGame, tournamentId);
 			}
 		}
+		
+		
+		
 		if(teams-game.getGameNumber()==1){
 			
 			String sqlUpdateQuery = "UPDATE tournament SET champion_id = ?  WHERE  tournament_id = ?";

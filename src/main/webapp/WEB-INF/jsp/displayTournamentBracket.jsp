@@ -12,16 +12,16 @@
 	   <br/>
 	<div class="bracketBack">
 	<main id="tournament">
-    <c:forEach var="round" items="${roundList}" varStatus="count" >
+    <c:forEach var="round" items="${roundList}" >
     
     	
-	<ul class="round round-1" >		
+	<ul class="round round" >		
 	
 		<c:forEach var="game" items = "${round.gamesInRound}" >
 		
 			<li class="spacer">&nbsp;</li>
 			<li id="player" class="game game-top ">{ <c:out value="${game.competitor1Name}"/> }<span><c:out value="${game.competitor1Score}"/></span></li>
-			<li class="game game-spacer"> ${game.gameNumber}&nbsp;</li>
+			<li class="game game-spacer"> game ${game.gameNumber}&nbsp;</li>
 			<li id="player" class="game game-bottom ">{ <c:out value="${game.competitor2Name}"/> }<span><c:out value="${game.competitor2Score}"/></span></li>
 			<li class="spacer">&nbsp;</li>
     	
@@ -29,6 +29,8 @@
     </ul>
     	</c:forEach>
     	</main>
+    	
+    	${championName}
     	<br/>
     	<br/>
     
