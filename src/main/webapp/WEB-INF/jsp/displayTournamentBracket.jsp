@@ -6,8 +6,11 @@
 
 	  <br/>
 	   <br/>
-	   <c:if test="${tournament.championId != ''}">
-	   <h1 id="champ">{ <c:out value="${championName}"/> is the Champion of <c:out value="${tournament.tournamentName}"/> }</h1> </c:if>
+	   <c:choose>
+	   <c:when test="${tournament.championId != ''}"><h1 id="champ">{ <c:out value="${championName}"/> is the Champion of <c:out value="${tournament.tournamentName}"/> }</h1>
+	    </c:when>
+	    <c:otherwise><c:out value="${tournament.tournamentName}"/></c:otherwise>
+	    </c:choose>
 		 <br/>
 		 <br/>
 	
