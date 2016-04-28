@@ -95,6 +95,7 @@ public class JDBCGameDAO implements GameDAO {
 			game.setTournamentId(tournamentId);
 			game.setCompetitor1Score(results.getInt("competitor_1_score"));
 			game.setCompetitor2Score(results.getInt("competitor_2_score"));
+			
 			if(results.getString("competitor_1") == null){
 				game.setCompetitor1Name("winner of previous");
 				
@@ -110,8 +111,8 @@ public class JDBCGameDAO implements GameDAO {
 				competitor1Results.next();
 				game.setCompetitor1Name(competitor1Results.getString("competitor_name"));
 				
-				
-				if(results.getString("competitor_2") == null){
+			}	
+			if(results.getString("competitor_2") == null){
 					game.setCompetitor2Name("winner of previous");
 				}
 				else{
@@ -125,19 +126,21 @@ public class JDBCGameDAO implements GameDAO {
 					competitor2Results.next();
 					game.setCompetitor2Name(competitor2Results.getString("competitor_name"));
 				}
-			}
 			gameList.add(game);
+			}
+		return gameList;
 			
 		}
 		
-		return gameList;
-	}
+		
+	
 
 	@Override
 	public List<Game> getGameListByTournamentId(int tournamentId) {
 		List<Game> gameList = new ArrayList<>();
 		
-		String sqlQueryForGames = "SELECT * FROM game WHERE tournament_id = ?";
+		String sqlQueryForGames = "SELECT * FROM game WHERE tournament_id = ? "
+				+ "AND competitor_1 IS NOT NULL AND competitor_2 IS NOT NULL AND competitor_winner_id IS NULL ";
 		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlQueryForGames, tournamentId);
 		

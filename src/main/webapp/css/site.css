@@ -201,7 +201,7 @@ main{
   .round .spacer:last-child{ flex-grow:.75; }
 
   .round .game-spacer{
-    flex-grow:1;
+    flex-grow:1.75;
   }
 
 /*

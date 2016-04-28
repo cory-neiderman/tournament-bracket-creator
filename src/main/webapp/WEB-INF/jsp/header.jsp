@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
+   		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
    
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
@@ -76,11 +77,18 @@
                         </c:when>
                         <c:otherwise>
                         	
-                            	<ul class="nav navbar-nav navbar-right">
-                            	<c:url var="tournamentDetailsHref" value="/displayAllTournaments" />
+                            	<c:url var="logoutAction" value="/logout" />
+                            <form id="logoutForm" action="${logoutAction}" method="POST"></form>
+                            <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+                            
+                              <ul class="nav navbar-nav navbar-right">
+                              	<c:url var="tournamentDetailsHref" value="/displayAllTournaments" />
+                            	<c:url var="homepageHref" value="/homepage" />
+                   					<li><a href="${homepageHref}">Home</a></li>
                             		<li><a href="${tournamentDetailsHref}">Select Tournament to View</a></li>
                             		<li><a id="logoutLink" href="#">Log Out</a></li>
                         </ul>
+                        		
                         </c:otherwise>
                     </c:choose>
             </div>
