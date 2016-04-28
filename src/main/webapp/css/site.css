@@ -91,6 +91,7 @@ input, select, textarea{
 	font-size: 55px;
 	color : #e19000;
 }
+
 #tournamentDetails{
 	 width: 350px;
     text-align:left;
@@ -161,6 +162,12 @@ input, select, textarea{
 }
 #addCompetitiors {
 	color: #e19000;
+}
+#verifyRseults{
+	text-align:center;
+	font-size: 55px;
+	color : #ff0209;
+}
 }
 #champ {
 	text-align: center;
