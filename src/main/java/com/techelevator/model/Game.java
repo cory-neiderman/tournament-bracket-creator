@@ -11,8 +11,8 @@ public class Game {
 	private String competitor1Name;
 	private String competitor2Name;
 	private int competitor2;
-	private int competitor1Score;
-	private int competitor2Score;
+	private String competitor1Score;
+	private String competitor2Score;
 	private int winnerCompetitorId;
 	private LocalDate date;
 	private int roundNumber;
@@ -36,16 +36,16 @@ public class Game {
 	public void setCompetitor2(int competitor2) {
 		this.competitor2 = competitor2;
 	}
-	public int getCompetitor1Score() {
+	public String getCompetitor1Score() {
 		return competitor1Score;
 	}
-	public void setCompetitor1Score(int competitor1Score) {
+	public void setCompetitor1Score(String competitor1Score) {
 		this.competitor1Score = competitor1Score;
 	}
-	public int getCompetitor2Score() {
+	public String getCompetitor2Score() {
 		return competitor2Score;
 	}
-	public void setCompetitor2Score(int competitor2Score) {
+	public void setCompetitor2Score(String competitor2Score) {
 		this.competitor2Score = competitor2Score;
 	}
 	public LocalDate getDate() {

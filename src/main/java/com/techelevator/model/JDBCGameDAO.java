@@ -93,8 +93,8 @@ public class JDBCGameDAO implements GameDAO {
 			Game game = new Game();
 			game.setGameNumber(results.getInt("game_number"));
 			game.setTournamentId(tournamentId);
-			game.setCompetitor1Score(results.getInt("competitor_1_score"));
-			game.setCompetitor2Score(results.getInt("competitor_2_score"));
+			game.setCompetitor1Score(results.getString("competitor_1_score"));
+			game.setCompetitor2Score(results.getString("competitor_2_score"));
 			
 			if(results.getString("competitor_1") == null){
 				game.setCompetitor1Name("tba");
