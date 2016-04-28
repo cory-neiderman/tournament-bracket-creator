@@ -98,12 +98,12 @@ $("#userName").change(function() {
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input name="role" type="checkbox" value="host" > Host
+                                <input name="role" type="radio" value="host" > Host
                             </label>
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input name="role" type="checkbox" value="player"> Player
+                                <input name="role" type="radio" value="player"> Player
                             </label>
                         </div>
                         <input class="btn btn-lg btn-danger btn-block" type="submit" value="{ Sign Up }">
