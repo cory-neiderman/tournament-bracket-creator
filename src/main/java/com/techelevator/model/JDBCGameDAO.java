@@ -85,7 +85,7 @@ public class JDBCGameDAO implements GameDAO {
 		
 		List<Game> gameList = new ArrayList<>();
 		
-		String sqlQueryForGames = "SELECT * FROM game WHERE tournament_id = ? AND round_number = ?";
+		String sqlQueryForGames = "SELECT * FROM game WHERE tournament_id = ? AND round_number = ? ORDER BY game_number";
 		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlQueryForGames, tournamentId, round);
 		
