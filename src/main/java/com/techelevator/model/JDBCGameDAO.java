@@ -289,6 +289,11 @@ public class JDBCGameDAO implements GameDAO {
 				jdbcTemplate.update(sqlUpdateQuery, game.getWinnerCompetitorId(), nextGame, tournamentId);
 			}
 		}
+		if(teams-game.getGameNumber()==1){
+			
+			String sqlUpdateQuery = "UPDATE tournament SET champion_id = ?  WHERE  tournament_id = ?";
+			jdbcTemplate.update(sqlUpdateQuery, game.getWinnerCompetitorId(), tournamentId);
+		}
 		
 		
 		

@@ -3,14 +3,7 @@
 		
 	<c:import url="/WEB-INF/jsp/header.jsp" />
 		
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
-	    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.js "></script>
-	    <script src="https://cdn.jsdelivr.net/jquery.timeago/1.4.1/jquery.timeago.min.js"></script>
-	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	    <c:url var="cssHref" value="/css/site.css" />
-		<link rel="stylesheet" type="text/css" href="${cssHref}">
+
 		<br/>
 		
 		
@@ -38,8 +31,8 @@
                         </div>
                           <div class="checkbox">
                             <label>
-                            ${game.competitor1}
-                                <input name="winnerId" type="checkbox" value="${game.competitor1}" > Winner?
+                           
+                                <input name="winnerId" type="radio" value="${game.competitor1}" > Winner?
                             </label>
                             <br/>
                         <div class="form-group">
@@ -49,12 +42,12 @@
                         </div>
                         <div class="checkbox">
                             <label>
-                            ${game.competitor2}
-                                <input name="winnerId" type="checkbox" value="${game.competitor2}"> Winner?
+                           
+                                <input name="winnerId" type="radio" value="${game.competitor2}"> Winner?
                             </label>
                         </div>
                         <input class="btn btn-lg btn-danger btn-block" type="submit" value="{ Record }">
-                        ${game.gameId}
+                        
                         <div style="color:red">${error}</div>
                     </fieldset>
                     </form>

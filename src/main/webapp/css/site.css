@@ -218,16 +218,17 @@ li.game{
   padding-left:20px;
 }
 
-  li.game.winner{
-    font-weight:bold;
-    font-size : 16px;
-  }
+  
   li.game span{
     float:right;
     margin-right:5px;
   }
 
-  li.game-top{ border-bottom:2px solid black; }
+  li.game-top{ 
+  	border-bottom:2px solid black;
+  	font-weight:bold;
+    font-size : 16px;
+    }
 
   li.game-spacer{ 
     border-right:2px solid black;
