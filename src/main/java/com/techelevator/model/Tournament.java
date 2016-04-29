@@ -13,10 +13,23 @@ public class Tournament {
 	private int minTeams;
 	private int maxTeams;
 	private String sport;
-	private int getNumberOfRounds;
+	
+	public int getByes(){
+		int[] knownBracket = {4,8,16,32,64,128};
+		for(int i=0; i<knownBracket.length; i++){
+			if(knownBracket[i]>=maxTeams){
+				return knownBracket[i]-maxTeams;
+			}
+		}
+		return 0;
+	}
 	
 	public int getNumberOfRounds(){
 		int count=0;
+		if(maxTeams !=2 || maxTeams !=4 || maxTeams !=8 || maxTeams !=16 || maxTeams !=32 || maxTeams !=64 || maxTeams != 128){
+			count++;
+		}
+		
 		int n = maxTeams;
 		while(n>1){
 			n=n/2;
